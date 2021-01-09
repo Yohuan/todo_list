@@ -15,27 +15,37 @@ Hope this project could make myself more familiar with web developments.
 - API server
 - OpenAPI
 - HTTP status code
+- Cookie
+- Session
 - Authentication
+- Reverse Proxy
+- Load balancing
 - Cache
 - Security
+- Container (with cluster)
+- CI/CD
 
 ## Tools
 
 - TypeScript
 - NodeJS
-- express
-- swagger
+- Express
+- Swagger
 - SQL database
+- Redis
+- Docker (compose)
+- Nginx
 - Github
+- VSCode REST Client
 
 # Features
 
-## 1. Account
+## Account
 
 - We could register a new user with user name and password.
 - We could sign in as a registered user.
 - Only the logged-in users could use the todo list.
-## 2. Todo list
+## Todo list
 
 - For each registered user, we could provide a separate todo list.
 - As a logged-in user, we could
@@ -43,3 +53,8 @@ Hope this project could make myself more familiar with web developments.
   - Edit a todo item.
   - Toggle a todo item as completed or not.
   - Filter the todo list.
+
+## Web Server
+
+- The server will log all the requests it receives.
+  - Log the timestamp.
