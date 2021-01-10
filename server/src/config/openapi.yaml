@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Yohuan's TodoList API
+  description: 'This is API doc for Yohuan''s todo list.'
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:5566/api'
+    description: Production server API
+tags:
+  - name: Todo
+    description: Everything about todo
+paths:
+  '/todos':
+    get:
+      tags:
+        - Todo
+      summary: Get a list of todo items
+      responses:
+        '200':
+          description: A JSON list of todo items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    post:
+      tags:
+        - Todo
+      summary: Creates a todo item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                todoDescription:
+                  type: string
+                  example: 'Learn how to code'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+  '/todos/{todoId}':
+    parameters:
+      - name: todoId
+        description: ID of the todo item
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/TodoId'
+    get:
+      tags:
+        - Todo
+      summary: Find todo by ID
+      description: Given a todo ID, return a todo item.
+      responses:
+        '200':
+          description: A JSON of todo item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '404':
+          $ref: '#/components/responses/404-NotFound'
+    put:
+      tags:
+        - Todo
+      summary: Update a todo item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '204':
+          description: Success
+        '404':
+          $ref: '#/components/responses/404-NotFound'
+    delete:
+      tags:
+        - Todo
+      summary: Delete a todo item
+      responses:
+        '204':
+          description: Success
+        '404':
+          $ref: '#/components/responses/404-NotFound'
+components:
+  schemas:
+    TodoId:
+      type: string
+      example: GzFxKH
+    Todo:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TodoId'
+        description:
+          type: string
+        isCompleted:
+          type: boolean
+          default: false
+      required:
+        - id
+        - description
+      example:
+        id: UHwkfm
+        description: 'Learn how to write test'
+        isCompleted: false
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          minimum: 0
+          example: 13
+        message:
+          type: string
+          example: 'Something wrong'
+      required:
+        - code
+  responses:
+    404-NotFound:
+      description: The request resource is not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
