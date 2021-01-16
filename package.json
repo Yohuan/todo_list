@@ -7,6 +7,10 @@
   "author": "Yohuan",
   "license": "MIT",
   "type": "commonjs",
+  "scripts": {
+    "run_server": "node ./server/run_server.js",
+    "run_server:dev": "nodemon ./server/run_server.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
