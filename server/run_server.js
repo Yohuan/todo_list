@@ -1,13 +1,13 @@
-const express = require('express');
+require('module-alias/register');
+
+const { buildApp } = require('@server/utils/app')
 
 const _PORT = 5566;
 
-const app = express();
+buildApp()
+  .then(app => {
+    app.listen(_PORT, () => {
+      console.log(`Listening at http://localhost:${_PORT}`);
+    });
+  });
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-app.listen(_PORT, () => {
-  console.log(`Listening at http://localhost:${_PORT}`);
-});

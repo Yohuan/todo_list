@@ -7,6 +7,9 @@
   "author": "Yohuan",
   "license": "MIT",
   "type": "commonjs",
+  "_moduleAliases": {
+    "@server": "./server/src"
+  },
   "scripts": {
     "run_server": "node ./server/run_server.js",
     "run_server:dev": "nodemon ./server/run_server.js"
