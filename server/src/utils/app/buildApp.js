@@ -1,6 +1,12 @@
+const { connector, summarise } = require('swagger-routes-express');
+
 const express = require('express');
 
-const buildApp = async () => {
+const buildApp = async (apiSpec) => {
+  const apiSummary = summarise(apiSpec);
+  // TODO: use logger
+  console.log(apiSummary);
+
   const app = express();
 
   app.get('/', (req, res) => {
