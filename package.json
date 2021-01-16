@@ -11,8 +11,8 @@
     "@server": "./server/src"
   },
   "scripts": {
-    "run_server": "node ./server/run_server.js",
-    "run_server:dev": "nodemon ./server/run_server.js"
+    "run_server": "ENV_FILE=./server/config/env/.env.prod node ./server/run_server.js",
+    "run_server:dev": "ENV_FILE=./server/config/env/.env.dev nodemon ./server/run_server.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
