@@ -15,6 +15,7 @@
     "run_server:dev": "nodemon ./server/run_server.js"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
     "swagger-routes-express": "^3.2.1",
