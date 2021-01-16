@@ -8,9 +8,12 @@
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "swagger-routes-express": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^7.17.0"
+    "eslint": "^7.17.0",
+    "nodemon": "^2.0.7"
   }
 }
