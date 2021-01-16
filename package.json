@@ -17,7 +17,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
-    "swagger-routes-express": "^3.2.1"
+    "swagger-routes-express": "^3.2.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^7.17.0",
