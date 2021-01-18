@@ -4,7 +4,7 @@ info:
   description: 'This is API doc for Yohuan''s todo list.'
   version: 1.0.0
 servers:
-  - url: 'http://localhost:5566/api'
+  - url: '/api'
     description: Production server API
 tags:
   - name: Todo
