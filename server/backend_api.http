@@ -1,5 +1,1 @@
-GET http://localhost:5566/ HTTP/1.1
-
-###
-
 GET http://localhost:5566/api/todos HTTP/1.1

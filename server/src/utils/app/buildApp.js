@@ -13,10 +13,6 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
 
   const app = express();
 
-  app.get('/', (req, res) => {
-    res.send('Hello World');
-  });
-
   // TODO: add security option
   // TODO: customize "notFound"
   // TODO: customize "notImplemented"
