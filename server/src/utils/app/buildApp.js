@@ -2,6 +2,8 @@ const { connector, summarise } = require('swagger-routes-express');
 
 const express = require('express');
 
+const apiControllers = require('@server/controllers');
+
 const buildApp = async ({ apiSpec, isDev = false }) => {
   if (isDev) {
     const apiSummary = summarise(apiSpec);
@@ -14,6 +16,12 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   app.get('/', (req, res) => {
     res.send('Hello World');
   });
+
+  // TODO: add security option
+  // TODO: customize "notFound"
+  // TODO: customize "notImplemented"
+  const connect = connector(apiControllers, apiSpec);
+  connect(app);
 
   return app;
 };
