@@ -15,6 +15,7 @@ paths:
       tags:
         - Todo
       summary: Get a list of todo items
+      operationId: getTodos
       responses:
         '200':
           description: A JSON list of todo items
