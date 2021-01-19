@@ -29,6 +29,7 @@ paths:
       tags:
         - Todo
       summary: Creates a todo item
+      operationId: createTodo
       requestBody:
         required: true
         content:

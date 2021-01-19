@@ -23,6 +23,7 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   }
 
   const app = express();
+  app.use('/api', express.json());
 
   // TODO: add security option
   // TODO: customize "notFound"
