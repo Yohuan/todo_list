@@ -7,10 +7,20 @@
   "author": "Yohuan",
   "license": "MIT",
   "type": "commonjs",
+  "_moduleAliases": {
+    "@server": "./server/src"
+  },
+  "scripts": {
+    "run_server": "ENV_FILE=./server/config/env/.env.prod node ./server/run_server.js",
+    "run_server:dev": "ENV_FILE=./server/config/env/.env.dev nodemon ./server/run_server.js"
+  },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
-    "swagger-routes-express": "^3.2.1"
+    "swagger-routes-express": "^3.2.1",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^7.17.0",

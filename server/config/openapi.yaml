@@ -4,7 +4,7 @@ info:
   description: 'This is API doc for Yohuan''s todo list.'
   version: 1.0.0
 servers:
-  - url: 'http://localhost:5566/api'
+  - url: '/api'
     description: Production server API
 tags:
   - name: Todo
@@ -15,6 +15,7 @@ paths:
       tags:
         - Todo
       summary: Get a list of todo items
+      operationId: getTodos
       responses:
         '200':
           description: A JSON list of todo items
