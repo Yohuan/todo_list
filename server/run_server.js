@@ -13,11 +13,10 @@ dotdev.config({ path: envFile });
 const _PORT = 5566;
 const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yaml');
 
-const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
-
 const main = async () => {
   let app = null;
   try {
+    const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
     app = await buildApp({
       apiSpec,
       isDev: process.env.MODE === 'development'
