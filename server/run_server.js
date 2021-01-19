@@ -15,12 +15,13 @@ const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yaml');
 
 const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
 
-buildApp({
-  apiSpec,
-  isDev: process.env.MODE === 'development'
-})
-  .then(app => {
-    app.listen(_PORT, () => {
-      console.log(`Listening at port ${_PORT}`);
-    });
+const main = async () => {
+  const app = await buildApp({
+    apiSpec,
+    isDev: process.env.MODE === 'development'
   });
+  await app.listen(_PORT);
+  console.log(`Listening at port ${_PORT}`);
+};
+
+main();
