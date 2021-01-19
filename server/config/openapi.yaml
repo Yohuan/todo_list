@@ -40,6 +40,8 @@ paths:
                 todoDescription:
                   type: string
                   example: 'Learn how to code'
+              required:
+                - todoDescription
       responses:
         '201':
           description: Success
