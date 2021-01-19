@@ -21,6 +21,6 @@ buildApp({
 })
   .then(app => {
     app.listen(_PORT, () => {
-      console.log(`Listening at http://localhost:${_PORT}`);
+      console.log(`Listening at port ${_PORT}`);
     });
   });
