@@ -1,3 +1,4 @@
+const SwaggerParser = require("@apidevtools/swagger-parser");
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const { connector, summarise } = require('swagger-routes-express');
@@ -5,6 +6,16 @@ const { connector, summarise } = require('swagger-routes-express');
 const apiControllers = require('@server/controllers');
 
 const buildApp = async ({ apiSpec, isDev = false }) => {
+  try {
+    await SwaggerParser.validate(apiSpec);
+  }
+  catch (err) {
+    const errorMsg = 'Invalid OpenAPI spec';
+    // TODO: use logger
+    console.error(errorMsg);
+    throw new Error(errorMsg)
+  }
+
   if (isDev) {
     const apiSummary = summarise(apiSpec);
     // TODO: use logger
