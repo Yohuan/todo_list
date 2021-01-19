@@ -1,7 +1,6 @@
-const { connector, summarise } = require('swagger-routes-express');
-
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
+const { connector, summarise } = require('swagger-routes-express');
 
 const apiControllers = require('@server/controllers');
 
