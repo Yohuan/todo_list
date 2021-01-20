@@ -6,5 +6,5 @@ POST http://localhost:5566/api/todos HTTP/1.1
 content-type: application/json
 
 {
-  "todoDescription": "a smple todo"
+  "todoDescription": "a sample todo"
 }
