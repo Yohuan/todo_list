@@ -23,7 +23,11 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   }
 
   const app = express();
+
+  // TODO: refactor as app.use('/api', apiRouter);
   app.use('/api', express.json());
+  // TODO: use gzip compression
+  // ex: app.use(compression());
 
   // TODO: add security option
   // TODO: customize "notFound"
@@ -33,6 +37,8 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
 
   // serve OpenAPI document
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
+
+  // TODO: add customized error handling middleware
 
   return app;
 };
