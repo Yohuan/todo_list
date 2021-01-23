@@ -4,7 +4,7 @@
 
 "@apidevtools/json-schema-ref-parser@9.0.7", "@apidevtools/json-schema-ref-parser@^9.0.6":
   version "9.0.7"
-  resolved "https://npm.synology.inc/@apidevtools%2fjson-schema-ref-parser/-/json-schema-ref-parser-9.0.7.tgz#64aa7f5b34e43d74ea9e408b90ddfba02050dde3"
+  resolved "https://registry.yarnpkg.com/@apidevtools/json-schema-ref-parser/-/json-schema-ref-parser-9.0.7.tgz#64aa7f5b34e43d74ea9e408b90ddfba02050dde3"
   integrity sha512-QdwOGF1+eeyFh+17v2Tz626WX0nucd1iKOm6JUTUvCZdbolblCOOQCxGrQPY0f7jEhn36PiAWqZnsC2r5vmUWg==
   dependencies:
     "@jsdevtools/ono" "^7.1.3"
@@ -13,17 +13,17 @@
 
 "@apidevtools/openapi-schemas@^2.0.4":
   version "2.0.4"
-  resolved "https://npm.synology.inc/@apidevtools%2fopenapi-schemas/-/openapi-schemas-2.0.4.tgz#bae1cef77ebb2b3705c7cc6911281da5153c1ab3"
+  resolved "https://registry.yarnpkg.com/@apidevtools/openapi-schemas/-/openapi-schemas-2.0.4.tgz#bae1cef77ebb2b3705c7cc6911281da5153c1ab3"
   integrity sha512-ob5c4UiaMYkb24pNhvfSABShAwpREvUGCkqjiz/BX9gKZ32y/S22M+ALIHftTAuv9KsFVSpVdIDzi9ZzFh5TCA==
 
 "@apidevtools/swagger-methods@^3.0.2":
   version "3.0.2"
-  resolved "https://npm.synology.inc/@apidevtools%2fswagger-methods/-/swagger-methods-3.0.2.tgz#b789a362e055b0340d04712eafe7027ddc1ac267"
+  resolved "https://registry.yarnpkg.com/@apidevtools/swagger-methods/-/swagger-methods-3.0.2.tgz#b789a362e055b0340d04712eafe7027ddc1ac267"
   integrity sha512-QAkD5kK2b1WfjDS/UQn/qQkbwF31uqRjPTrsCs5ZG9BQGAkjwvqGFjjPqAuzac/IYzpPtRzjCP1WrTuAIjMrXg==
 
 "@apidevtools/swagger-parser@^10.0.2":
   version "10.0.2"
-  resolved "https://npm.synology.inc/@apidevtools%2fswagger-parser/-/swagger-parser-10.0.2.tgz#f4145afb7c3a3bafe0376f003b5c3bdeae17a952"
+  resolved "https://registry.yarnpkg.com/@apidevtools/swagger-parser/-/swagger-parser-10.0.2.tgz#f4145afb7c3a3bafe0376f003b5c3bdeae17a952"
   integrity sha512-JFxcEyp8RlNHgBCE98nwuTkZT6eNFPc1aosWV6wPcQph72TSEEu1k3baJD4/x1qznU+JiDdz8F5pTwabZh+Dhg==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.6"
@@ -54,10 +54,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@eslint/eslintrc@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.2.2.tgz#d01fc791e2fc33e88a29d6f3dc7e93d0cd784b76"
-  integrity sha512-EfB5OHNYp1F4px/LI/FEnGylop7nOqkQ1LRzCM0KccA2U8tvV8w01KBv37LbO7nW4H+YhKyo2LcJhRwjjV17QQ==
+"@eslint/eslintrc@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.3.0.tgz#d736d6963d7003b6514e6324bec9c602ac340318"
+  integrity sha512-1JTKgrOKAHVivSvOYw+sJOunkBjUOvjqWk1DPja7ZFhIS2mX/4EgTT8M7eTK9jrKhL/FvXXEbQwIs3pg1xp3dg==
   dependencies:
     ajv "^6.12.4"
     debug "^4.1.1"
@@ -66,13 +66,13 @@
     ignore "^4.0.6"
     import-fresh "^3.2.1"
     js-yaml "^3.13.1"
-    lodash "^4.17.19"
+    lodash "^4.17.20"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
 "@jsdevtools/ono@7.1.3", "@jsdevtools/ono@^7.1.3":
   version "7.1.3"
-  resolved "https://npm.synology.inc/@jsdevtools%2fono/-/ono-7.1.3.tgz#9df03bbd7c696a5c58885c34aa06da41c8543796"
+  resolved "https://registry.yarnpkg.com/@jsdevtools/ono/-/ono-7.1.3.tgz#9df03bbd7c696a5c58885c34aa06da41c8543796"
   integrity sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==
 
 "@sindresorhus/is@^0.14.0":
@@ -176,7 +176,7 @@ anymatch@~3.1.1:
 
 append-field@^1.0.0:
   version "1.0.0"
-  resolved "https://npm.synology.inc/append-field/-/append-field-1.0.0.tgz#1e3440e915f0b1203d23748e78edd7b9b5b43e56"
+  resolved "https://registry.yarnpkg.com/append-field/-/append-field-1.0.0.tgz#1e3440e915f0b1203d23748e78edd7b9b5b43e56"
   integrity sha1-HjRA6RXwsSA9I3SOeO3XubW0PlY=
 
 argparse@^1.0.7:
@@ -202,9 +202,9 @@ balanced-match@^1.0.0:
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 binary-extensions@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.1.0.tgz#30fa40c9e7fe07dbc895678cd287024dea241dd9"
-  integrity sha512-1Yj8h9Q+QDF5FzhMs/c9+6UntbD5MkRfRwac8DoEm9ZfUBZ7tZ55YcGVAzEe4bXsdQHEk+s9S5wsOKVdZrw0tQ==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
+  integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -253,12 +253,12 @@ braces@~3.0.2:
 
 buffer-from@^1.0.0:
   version "1.1.1"
-  resolved "https://npm.synology.inc/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
 busboy@^0.2.11:
   version "0.2.14"
-  resolved "https://npm.synology.inc/busboy/-/busboy-0.2.14.tgz#6c2a622efcf47c57bbbe1e2a9c37ad36c7925453"
+  resolved "https://registry.yarnpkg.com/busboy/-/busboy-0.2.14.tgz#6c2a622efcf47c57bbbe1e2a9c37ad36c7925453"
   integrity sha1-bCpiLvz0fFe7vh4qnDetNseSVFM=
   dependencies:
     dicer "0.2.5"
@@ -284,7 +284,7 @@ cacheable-request@^6.0.0:
 
 call-me-maybe@^1.0.1:
   version "1.0.1"
-  resolved "https://npm.synology.inc/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
+  resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
   integrity sha1-JtII6onje1y95gJQoV8DHBak1ms=
 
 callsites@^3.0.0:
@@ -323,9 +323,9 @@ chalk@^4.0.0:
     supports-color "^7.1.0"
 
 chokidar@^3.2.2:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.0.tgz#458a4816a415e9d3b3caa4faec2b96a6935a9e65"
-  integrity sha512-JgQM9JS92ZbFR4P90EvmzNpSGhpPBGBSj10PILeDyYFwp4h2/D9OM03wsJ4zW1fEp4ka2DGrnUeD7FuvQ2aZ2Q==
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
   dependencies:
     anymatch "~3.1.1"
     braces "~3.0.2"
@@ -380,7 +380,7 @@ color-name@~1.1.4:
 
 commander@^2.7.1:
   version "2.20.3"
-  resolved "https://npm.synology.inc/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
 concat-map@0.0.1:
@@ -390,7 +390,7 @@ concat-map@0.0.1:
 
 concat-stream@^1.5.2:
   version "1.6.2"
-  resolved "https://npm.synology.inc/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
+  resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
   integrity sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==
   dependencies:
     buffer-from "^1.0.0"
@@ -434,7 +434,7 @@ cookie@0.4.0:
 
 core-util-is@~1.0.0:
   version "1.0.2"
-  resolved "https://npm.synology.inc/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+  resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
 cross-spawn@^7.0.2:
@@ -506,7 +506,7 @@ destroy@~1.0.4:
 
 dicer@0.2.5:
   version "0.2.5"
-  resolved "https://npm.synology.inc/dicer/-/dicer-0.2.5.tgz#5996c086bb33218c812c090bddc09cd12facb70f"
+  resolved "https://registry.yarnpkg.com/dicer/-/dicer-0.2.5.tgz#5996c086bb33218c812c090bddc09cd12facb70f"
   integrity sha1-WZbAhrszIYyBLAkL3cCc0S+stw8=
   dependencies:
     readable-stream "1.1.x"
@@ -611,12 +611,12 @@ eslint-visitor-keys@^2.0.0:
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
 eslint@^7.17.0:
-  version "7.17.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.17.0.tgz#4ccda5bf12572ad3bf760e6f195886f50569adb0"
-  integrity sha512-zJk08MiBgwuGoxes5sSQhOtibZ75pz0J35XTRlZOk9xMffhpA9BTbQZxoXZzOl5zMbleShbGwtw+1kGferfFwQ==
+  version "7.18.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.18.0.tgz#7fdcd2f3715a41fe6295a16234bd69aed2c75e67"
+  integrity sha512-fbgTiE8BfUJZuBeq2Yi7J3RB3WGUQ9PNuNbmgi6jt9Iv8qrkxfy19Ds3OpL1Pm7zg3BtTVhvcUZbIRQ0wmSjAQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
-    "@eslint/eslintrc" "^0.2.2"
+    "@eslint/eslintrc" "^0.3.0"
     ajv "^6.10.0"
     chalk "^4.0.0"
     cross-spawn "^7.0.2"
@@ -640,7 +640,7 @@ eslint@^7.17.0:
     js-yaml "^3.13.1"
     json-stable-stringify-without-jsonify "^1.0.1"
     levn "^0.4.1"
-    lodash "^4.17.19"
+    lodash "^4.17.20"
     minimatch "^3.0.4"
     natural-compare "^1.4.0"
     optionator "^0.9.1"
@@ -703,7 +703,7 @@ etag@~1.8.1:
 
 express-openapi-validator@^4.10.8:
   version "4.10.8"
-  resolved "https://npm.synology.inc/express-openapi-validator/-/express-openapi-validator-4.10.8.tgz#80f2e4c39d3c8e9203b2a7c79801bd573c9e2e9d"
+  resolved "https://registry.yarnpkg.com/express-openapi-validator/-/express-openapi-validator-4.10.8.tgz#80f2e4c39d3c8e9203b2a7c79801bd573c9e2e9d"
   integrity sha512-PF40cfxOlPWgMBTquLP8v3JCP8HF6QMLl5i4LbTqncowZRF1gcQVShxSu7hRRSS2chkOQaLSYWYxQVt8ZTeBlA==
   dependencies:
     ajv "^6.12.6"
@@ -805,9 +805,9 @@ flat-cache@^3.0.4:
     rimraf "^3.0.2"
 
 flatted@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.0.tgz#a5d06b4a8b01e3a63771daa5cb7a1903e2e57067"
-  integrity sha512-tW+UkmtNg/jv9CSofAKvgVcO7c2URjhTdW1ZTkcAritblu8tajiYy7YisnIflEwtKssCtOxpnBRoCB7iap0/TA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.1.tgz#c4b489e80096d9df1dfc97c79871aea7c617c469"
+  integrity sha512-zAoAQiudy+r5SvnSw3KJy5os/oRJYHzrzja/tBDqrZtNhUw8bt6y8OBzMWcjWr+8liV8Eb6yOhw8WZ7VFZ5ZzA==
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -1089,12 +1089,12 @@ is-yarn-global@^0.3.0:
 
 isarray@0.0.1:
   version "0.0.1"
-  resolved "https://npm.synology.inc/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
   integrity sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=
 
 isarray@~1.0.0:
   version "1.0.0"
-  resolved "https://npm.synology.inc/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
 isexe@^2.0.0:
@@ -1122,7 +1122,7 @@ json-buffer@3.0.0:
 
 json-schema-ref-parser@^9.0.6:
   version "9.0.7"
-  resolved "https://npm.synology.inc/json-schema-ref-parser/-/json-schema-ref-parser-9.0.7.tgz#c0ccc5aaee34844f0865889b67e0b67d616f7375"
+  resolved "https://registry.yarnpkg.com/json-schema-ref-parser/-/json-schema-ref-parser-9.0.7.tgz#c0ccc5aaee34844f0865889b67e0b67d616f7375"
   integrity sha512-uxU9Ix+MVszvCTvBucQiIcNEny3oAEFg7EQHSZw2bquCCuqUqEPEczIdv/Uqo1Zv4/wDPZqOI+ulrMk1ncMtjQ==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "9.0.7"
@@ -1166,30 +1166,30 @@ levn@^0.4.1:
 
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
-  resolved "https://npm.synology.inc/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 lodash.get@^4.4.2:
   version "4.4.2"
-  resolved "https://npm.synology.inc/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
 
 lodash.isequal@^4.5.0:
   version "4.5.0"
-  resolved "https://npm.synology.inc/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
-  resolved "https://npm.synology.inc/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
+  resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash.zipobject@^4.1.3:
   version "4.1.3"
-  resolved "https://npm.synology.inc/lodash.zipobject/-/lodash.zipobject-4.1.3.tgz#b399f5aba8ff62a746f6979bf20b214f964dbef8"
+  resolved "https://registry.yarnpkg.com/lodash.zipobject/-/lodash.zipobject-4.1.3.tgz#b399f5aba8ff62a746f6979bf20b214f964dbef8"
   integrity sha1-s5n1q6j/YqdG9peb8gshT5ZNvvg=
 
-lodash@^4.17.19, lodash@^4.17.20:
+lodash@^4.17.20:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -1225,7 +1225,7 @@ media-typer@0.3.0:
 
 media-typer@^1.1.0:
   version "1.1.0"
-  resolved "https://npm.synology.inc/media-typer/-/media-typer-1.1.0.tgz#6ab74b8f2d3320f2064b2a87a38e7931ff3a5561"
+  resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-1.1.0.tgz#6ab74b8f2d3320f2064b2a87a38e7931ff3a5561"
   integrity sha512-aisnrDP4GNe06UcKFnV5bfMNPBUw4jsLGaWwWfnH3v02GnBuXX2MCVn5RbrWo0j3pczUilYblq7fQ7Nw2t5XKw==
 
 merge-descriptors@1.0.1:
@@ -1274,7 +1274,7 @@ minimist@^1.2.0, minimist@^1.2.5:
 
 mkdirp@^0.5.1:
   version "0.5.5"
-  resolved "https://npm.synology.inc/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
@@ -1306,7 +1306,7 @@ ms@^2.1.1:
 
 multer@^1.4.2:
   version "1.4.2"
-  resolved "https://npm.synology.inc/multer/-/multer-1.4.2.tgz#2f1f4d12dbaeeba74cb37e623f234bf4d3d2057a"
+  resolved "https://registry.yarnpkg.com/multer/-/multer-1.4.2.tgz#2f1f4d12dbaeeba74cb37e623f234bf4d3d2057a"
   integrity sha512-xY8pX7V+ybyUpbYMxtjM9KAiD9ixtg5/JkeKUTD6xilfDv0vzzOFcCp4Ljb1UU3tSOM3VTZtKo63OmzOrGi3Cg==
   dependencies:
     append-field "^1.0.0"
@@ -1320,7 +1320,7 @@ multer@^1.4.2:
 
 nanoid@^3.1.20:
   version "3.1.20"
-  resolved "https://npm.synology.inc/nanoid/-/nanoid-3.1.20.tgz#badc263c6b1dcf14b71efaa85f6ab4c1d6cfc788"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.20.tgz#badc263c6b1dcf14b71efaa85f6ab4c1d6cfc788"
   integrity sha512-a1cQNyczgKbLX9jwbS/+d7W8fX/RfgYR7lVWwWOGIPNgK2m0MWvrGF6/m4kk6U3QcFMnZf3RIhL0v2Jgh/0Uxw==
 
 natural-compare@^1.4.0:
@@ -1368,7 +1368,7 @@ normalize-url@^4.1.0:
 
 object-assign@^4.1.1:
   version "4.1.1"
-  resolved "https://npm.synology.inc/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
 on-finished@^2.3.0, on-finished@~2.3.0:
@@ -1387,7 +1387,7 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
 
 ono@^7.1.3:
   version "7.1.3"
-  resolved "https://npm.synology.inc/ono/-/ono-7.1.3.tgz#a054e96a388f566a6c4c95e1e92b9b253722d286"
+  resolved "https://registry.yarnpkg.com/ono/-/ono-7.1.3.tgz#a054e96a388f566a6c4c95e1e92b9b253722d286"
   integrity sha512-9jnfVriq7uJM4o5ganUY54ntUm+5EK21EGaQ5NWnkWg3zz5ywbbonlBguRcnmF1/HDiIe3zxNxXcO1YPBmPcQQ==
   dependencies:
     "@jsdevtools/ono" "7.1.3"
@@ -1448,7 +1448,7 @@ path-to-regexp@0.1.7:
 
 path-to-regexp@^6.2.0:
   version "6.2.0"
-  resolved "https://npm.synology.inc/path-to-regexp/-/path-to-regexp-6.2.0.tgz#f7b3803336104c346889adece614669230645f38"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.0.tgz#f7b3803336104c346889adece614669230645f38"
   integrity sha512-f66KywYG6+43afgE/8j/GoiNyygk/bnoCbps++3ErRKsIYkGGupyv07R2Ok5m9i67Iqc+T2g1eAUGUPzWhYTyg==
 
 picomatch@^2.0.4, picomatch@^2.2.1:
@@ -1468,7 +1468,7 @@ prepend-http@^2.0.0:
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
-  resolved "https://npm.synology.inc/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
+  resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
 progress@^2.0.0:
@@ -1541,7 +1541,7 @@ rc@^1.2.8:
 
 readable-stream@1.1.x:
   version "1.1.14"
-  resolved "https://npm.synology.inc/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   integrity sha1-fPTFTvZI44EwhMY23SB54WbAgdk=
   dependencies:
     core-util-is "~1.0.0"
@@ -1551,7 +1551,7 @@ readable-stream@1.1.x:
 
 readable-stream@^2.2.2:
   version "2.3.7"
-  resolved "https://npm.synology.inc/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
   integrity sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==
   dependencies:
     core-util-is "~1.0.0"
@@ -1718,7 +1718,7 @@ sprintf-js@~1.0.2:
 
 streamsearch@0.1.2:
   version "0.1.2"
-  resolved "https://npm.synology.inc/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
+  resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
   integrity sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
 
 string-width@^3.0.0:
@@ -1741,12 +1741,12 @@ string-width@^4.0.0, string-width@^4.1.0, string-width@^4.2.0:
 
 string_decoder@~0.10.x:
   version "0.10.31"
-  resolved "https://npm.synology.inc/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
   integrity sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ=
 
 string_decoder@~1.1.1:
   version "1.1.1"
-  resolved "https://npm.synology.inc/string_decoder/-/string_decoder-1.1.1.tgz#9cf1611ba62685d7030ae9e4ba34149c3af03fc8"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.1.tgz#9cf1611ba62685d7030ae9e4ba34149c3af03fc8"
   integrity sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
   dependencies:
     safe-buffer "~5.1.0"
@@ -1798,12 +1798,12 @@ swagger-routes-express@^3.2.1:
 
 swagger-ui-dist@^3.18.1:
   version "3.40.0"
-  resolved "https://npm.synology.inc/swagger-ui-dist/-/swagger-ui-dist-3.40.0.tgz#7e607103a3c432da9559f4c4d8c22832a9759be5"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.40.0.tgz#7e607103a3c432da9559f4c4d8c22832a9759be5"
   integrity sha512-R0eaS61/cOE6wiFOY7AtmoTBV5lZqmyosuE14G9nAudp5MNsNfCTdI9MWJLs8iF28HXdtH8EACiFFtUbQomHog==
 
 swagger-ui-express@^4.1.6:
   version "4.1.6"
-  resolved "https://npm.synology.inc/swagger-ui-express/-/swagger-ui-express-4.1.6.tgz#682294af3d5c70f74a1fa4d6a9b503a9ee55ea82"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.1.6.tgz#682294af3d5c70f74a1fa4d6a9b503a9ee55ea82"
   integrity sha512-Xs2BGGudvDBtL7RXcYtNvHsFtP1DBFPMJFRxHe5ez/VG/rzVOEjazJOOSc/kSCyxreCTKfJrII6MJlL9a6t8vw==
   dependencies:
     swagger-ui-dist "^3.18.1"
@@ -1881,7 +1881,7 @@ typedarray-to-buffer@^3.1.5:
 
 typedarray@^0.0.6:
   version "0.0.6"
-  resolved "https://npm.synology.inc/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+  resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 undefsafe@^2.0.3:
@@ -1923,9 +1923,9 @@ update-notifier@^4.1.0:
     xdg-basedir "^4.0.0"
 
 uri-js@^4.2.2:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.0.tgz#aa714261de793e8a82347a7bcc9ce74e86f28602"
-  integrity sha512-B0yRTzYdUCCn9n+F4+Gh4yIDtMQcaJsmYBDsTSG8g/OejKBodLQ2IHfN3bM7jUsRXndopT7OIXWdYqc1fjmV6g==
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
+  integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
 
@@ -1938,7 +1938,7 @@ url-parse-lax@^3.0.0:
 
 util-deprecate@~1.0.1:
   version "1.0.2"
-  resolved "https://npm.synology.inc/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
+  resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
 utils-merge@1.0.1:
@@ -1953,7 +1953,7 @@ v8-compile-cache@^2.0.3:
 
 validator@^12.0.0:
   version "12.2.0"
-  resolved "https://npm.synology.inc/validator/-/validator-12.2.0.tgz#660d47e96267033fd070096c3b1a6f2db4380a0a"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-12.2.0.tgz#660d47e96267033fd070096c3b1a6f2db4380a0a"
   integrity sha512-jJfE/DW6tIK1Ek8nCfNFqt8Wb3nzMoAbocBF6/Icgg1ZFSBpObdnwVY2jQj6qUqzhx5jc71fpvBWyLGO7Xl+nQ==
 
 vary@~1.1.2:
@@ -2002,7 +2002,7 @@ xdg-basedir@^4.0.0:
 
 xtend@^4.0.0:
   version "4.0.2"
-  resolved "https://npm.synology.inc/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 yallist@^4.0.0:
@@ -2020,7 +2020,7 @@ yamljs@^0.3.0:
 
 z-schema@^4.2.3:
   version "4.2.3"
-  resolved "https://npm.synology.inc/z-schema/-/z-schema-4.2.3.tgz#85f7eea7e6d4fe59a483462a98f511bd78fe9882"
+  resolved "https://registry.yarnpkg.com/z-schema/-/z-schema-4.2.3.tgz#85f7eea7e6d4fe59a483462a98f511bd78fe9882"
   integrity sha512-zkvK/9TC6p38IwcrbnT3ul9in1UX4cm1y/VZSs4GHKIiDCrlafc+YQBgQBUdDXLAoZHf2qvQ7gJJOo6yT1LH6A==
   dependencies:
     lodash.get "^4.4.2"
