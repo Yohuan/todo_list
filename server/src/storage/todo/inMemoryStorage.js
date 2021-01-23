@@ -1,6 +1,6 @@
 const { TodoNotFoundError } = require('@server/errors/todo');
 
-const _createTodoNotFoundError  = (todoId) => new TodoNotFoundError(`Cannot found todo with ID(${todoId})`);
+const _createTodoNotFoundError  = (todoId) => new TodoNotFoundError(`Cannot find todo with ID(${todoId})`);
 
 const _createInMemoryStorage = (initialTodos = []) => {
   const _todos = initialTodos;
