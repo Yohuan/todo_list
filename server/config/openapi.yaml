@@ -67,6 +67,7 @@ paths:
         - Todo
       summary: Find todo by ID
       description: Given a todo ID, return a todo item.
+      operationId: getTodo
       responses:
         '200':
           description: A JSON of todo item
