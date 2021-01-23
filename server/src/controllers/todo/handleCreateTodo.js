@@ -1,5 +1,7 @@
 const TodoService = require('@server/services/todo');
 const { TodoErrorCode } = require('@server/constants/error');
+const { HttpHeader } = require('@server/constants/http');
+const { generateTodoUrl } = require('@server/utils/todo');
 
 const handleCreateTodo = async (req, res) => {
   const { todoDescription } = req.body;
@@ -14,7 +16,7 @@ const handleCreateTodo = async (req, res) => {
     });
   }
 
-  // TODO: set Location header
+  res.set(HttpHeader.LOCATION, generateTodoUrl(todoId));
   res.status(201).json({ todoId });
 };
 
