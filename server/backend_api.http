@@ -8,3 +8,7 @@ content-type: application/json
 {
   "todoDescription": "a sample todo"
 }
+
+###
+
+GET http://localhost:5566/api/todos/WmxR5a HTTP/1.1
