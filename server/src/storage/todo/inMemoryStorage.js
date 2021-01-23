@@ -1,5 +1,18 @@
+const { TodoNotFoundError } = require('@server/errors/todo');
+
+const _createTodoNotFoundError  = (todoId) => new TodoNotFoundError(`Cannot found todo with ID(${todoId})`);
+
 const _createInMemoryStorage = (initialTodos = []) => {
-  let _todos = initialTodos;
+  const _todos = initialTodos;
+
+  const _findIdxById = (todoId) => {
+    const targetIdx = _todos.findIndex(todo => todo.id === todoId);
+    if (targetIdx < 0) {
+      throw _createTodoNotFoundError(todoId);
+    }
+
+    return targetIdx;
+  };
 
   const getAllTodos = async () => {
     return _todos;
@@ -10,20 +23,18 @@ const _createInMemoryStorage = (initialTodos = []) => {
   };
 
   const getTodoById = async (todoId) => {
-    const targetTodo = _todos.find(todo => todo.id === todoId);
-    return !targetTodo ? null : targetTodo;
+    const targetIdx = _findIdxById(todoId);
+    return _todos[targetIdx];
   };
 
   const deleteTodoById = async (todoId) => {
-    _todos = _todos.filter(todo => todo.id !== todoId);
+    const targetIdx = _findIdxById(todoId);
+
+    _todos.splice(targetIdx, 1);
   };
 
   const updateTodoById = async (todoId, { description = null, isCompleted = null } = {}) => {
-    const targetIdx = _todos.findIndex(todo => todo.id === todoId);
-    if (targetIdx < 0) {
-      // TODO: throw customized error
-      throw new Error('todo not found');
-    }
+    const targetIdx = _findIdxById(todoId);
 
     if (description) {
       _todos[targetIdx].description = description;
