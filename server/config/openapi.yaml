@@ -29,6 +29,7 @@ paths:
       tags:
         - Todo
       summary: Creates a todo item
+      operationId: createTodo
       requestBody:
         required: true
         content:
@@ -39,13 +40,20 @@ paths:
                 todoDescription:
                   type: string
                   example: 'Learn how to code'
+              required:
+                - todoDescription
       responses:
         '201':
-          description: Success
+          description: Created Todo ID
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'
+                type: object
+                properties:
+                  todoId:
+                    $ref: '#/components/schemas/TodoId'
+                required:
+                  - todoId
   '/todos/{todoId}':
     parameters:
       - name: todoId
