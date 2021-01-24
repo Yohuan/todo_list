@@ -3,6 +3,7 @@ const {
   RunTimeErrorCode,
   TodoErrorCode,
 } = require('@server/constants/error');
+const { StatusCode } = require('@server/constants/http');
 const { TodoNotFoundError } = require('@server/errors/todo');
 
 module.exports = async (req, res) => {
@@ -10,10 +11,10 @@ module.exports = async (req, res) => {
 
   try {
     const todo = await TodoService.getTodoById(todoId);
-    res.status(200).json(todo);
+    res.status(StatusCode.OK_200).json(todo);
   } catch (err) {
     if (err instanceof TodoNotFoundError) {
-      res.status(404).json({
+      res.status(StatusCode.NOT_FOUND_404).json({
         code: TodoErrorCode.NOT_FOUND_ERROR,
         message: err.message,
       });
@@ -21,7 +22,7 @@ module.exports = async (req, res) => {
       return;
     }
 
-    res.status(500).json({
+    res.status(StatusCode.INTERNAL_SERVER_ERROR_500).json({
       code: RunTimeErrorCode.UNKNOWN,
       message: 'Something wrong',
     });
