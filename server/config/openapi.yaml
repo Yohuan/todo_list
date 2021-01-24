@@ -96,6 +96,7 @@ paths:
       tags:
         - Todo
       summary: Delete a todo item
+      operationId: removeTodo
       responses:
         '204':
           description: Success
