@@ -52,6 +52,7 @@ Hope this project could make myself more familiar with web developments.
   - Add a new todo item.
   - Edit a todo item.
   - Toggle a todo item as completed or not.
+  - Delete a tdo item.
   - Filter the todo list.
 
 ## Web Server
