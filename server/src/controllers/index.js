@@ -3,6 +3,7 @@ const {
   handleGetTodo,
   handleGetTodos,
   handleRemoveTodo,
+  handleUpdateTodo,
 } = require('./todo');
 
 const apiControllers = {
@@ -10,6 +11,7 @@ const apiControllers = {
   getTodo: handleGetTodo,
   getTodos: handleGetTodos,
   removeTodo: handleRemoveTodo,
+  updateTodo: handleUpdateTodo,
 };
 
 module.exports = apiControllers;

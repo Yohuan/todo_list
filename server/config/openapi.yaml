@@ -81,6 +81,7 @@ paths:
       tags:
         - Todo
       summary: Update a todo item
+      operationId: updateTodo
       requestBody:
         required: true
         content:
@@ -90,6 +91,8 @@ paths:
       responses:
         '204':
           description: Success
+        '400':
+          $ref: '#/components/responses/400-BadRequest'
         '404':
           $ref: '#/components/responses/404-NotFound'
     delete:
@@ -137,6 +140,12 @@ components:
       required:
         - code
   responses:
+    400-BadRequest:
+      description: The input parameters do not meet expectation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     404-NotFound:
       description: The request resource is not found
       content:
