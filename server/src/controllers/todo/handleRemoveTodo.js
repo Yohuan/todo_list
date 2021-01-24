@@ -13,11 +13,8 @@ module.exports = async (req, res) => {
     res.status(204).end();
   } catch (err) {
     if (err instanceof TodoNotFoundError) {
-      res.status(404).json({
-        code: TodoErrorCode.NOT_FOUND_ERROR,
-        message: err.message,
-      });
-
+      // Let DELETE be idempotent
+      res.status(204).end();
       return;
     }
 
