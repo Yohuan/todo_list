@@ -16,6 +16,24 @@
     "lint": "eslint --no-eslintrc --config ./.eslintrc './server/**/*.js'",
     "lint:fix": "eslint --no-eslintrc --config ./.eslintrc --fix './server/**/*.js'"
   },
+  "jest": {
+    "testRegex": "/.*(\\.)(test)\\.js$",
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ],
+    "moduleNameMapper": {
+      "@server/(.*)$": "<rootDir>/server/src/$1"
+    },
+    "collectCoverageFrom": [
+      "./server/src/**/*.js"
+    ],
+    "coverageDirectory": "./jest/coverage",
+    "coverageReporters": [
+      "lcov",
+      "cobertura",
+      "text"
+    ]
+  },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.0.2",
     "dotenv": "^8.2.0",
