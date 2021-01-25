@@ -1,16 +1,19 @@
 {
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "extends": [
     "airbnb",
     "airbnb/hooks",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended",
     "prettier/react"
   ],
   "plugins": [
     "eslint-plugin-import",
+    "eslint-plugin-jest",
     "eslint-plugin-prettier",
     "eslint-plugin-react",
     "eslint-plugin-react-hooks",
