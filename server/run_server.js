@@ -2,10 +2,10 @@ require('module-alias/register');
 
 const path = require('path');
 
-const YAML = require('yamljs');
 const dotdev = require('dotenv');
+const YAML = require('yamljs');
 
-const { buildApp } = require('@server/utils/app')
+const { buildApp } = require('@server/utils/app');
 
 const envFile = path.join(process.cwd(), process.env.ENV_FILE);
 dotdev.config({ path: envFile });
@@ -21,7 +21,7 @@ const main = async () => {
     app = await buildApp({
       apiSpec,
       // TODO: rename "MODE" as "NODE_ENV"
-      isDev: process.env.MODE === 'development'
+      isDev: process.env.MODE === 'development',
     });
   } catch (err) {
     console.error('Build app failed');

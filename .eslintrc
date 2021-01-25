@@ -1,0 +1,49 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "plugins": [
+    "eslint-plugin-import",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-sort-requires"
+  ],
+  "rules": {
+    "import/no-cycle": ["warn"],
+    "import/order": ["warn", {
+      "groups": [
+        "builtin",
+        "external",
+        [
+          "index",
+          "internal",
+          "parent",
+          "sibling",
+          "unknown"
+        ]
+      ],
+      "newlines-between": "always"
+    }],
+    "no-console": ["warn"],
+    "no-underscore-dangle": ["off"],
+    "no-unused-vars": ["error", {
+      "argsIgnorePattern": "next"
+    }],
+    "sort-requires/sort-requires": ["warn"]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@server", "./server/src"]
+        ],
+        "extensions": [".js"]
+      }
+    }
+  }
+}

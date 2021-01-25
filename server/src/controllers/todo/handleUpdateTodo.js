@@ -9,7 +9,7 @@ const { TodoNotFoundError } = require('@server/errors/todo');
 module.exports = async (req, res) => {
   const { todoId } = req.params;
   const { id, description, isCompleted } = req.body;
-  if ( todoId  !== id) {
+  if (todoId !== id) {
     res.status(StatusCode.BAD_REQUEST_400).json({
       code: TodoErrorCode.ID_NOT_MATCH,
       message: 'Todo ID does not match with URL',
