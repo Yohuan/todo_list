@@ -1,3 +1,3 @@
 const { todoInMemoryStorage } = require('@server/storage/todo');
 
-module.exports = async (todoId) => todoInMemoryStorage.deleteTodoById(todoId);
+module.exports = async todoId => todoInMemoryStorage.deleteTodoById(todoId);
