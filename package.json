@@ -35,6 +35,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sort-requires": "^2.1.0",
     "nodemon": "^2.0.7"
   }
 }
