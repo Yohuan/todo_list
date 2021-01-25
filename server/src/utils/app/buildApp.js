@@ -30,17 +30,19 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   // ex: app.use(compression());
 
   // TODO: validate security
-  app.use(OpenApiValidator.middleware({
-    apiSpec,
-    validateRequests: true,
-    validateResponses: {
-      onError: (error, body) => {
-        // TODO: log the error
-        console.log('Response body fails validation: ', error);
-        console.debug(body);
+  app.use(
+    OpenApiValidator.middleware({
+      apiSpec,
+      validateRequests: true,
+      validateResponses: {
+        onError: (error, body) => {
+          // TODO: log the error
+          console.log('Response body fails validation: ', error);
+          console.debug(body);
+        },
       },
-    },
-  }));
+    }),
+  );
 
   // TODO: add security option
   // TODO: customize "notFound"

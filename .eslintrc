@@ -5,10 +5,13 @@
   },
   "extends": [
     "airbnb",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
   "plugins": [
     "eslint-plugin-import",
+    "eslint-plugin-prettier",
     "eslint-plugin-react",
     "eslint-plugin-react-hooks",
     "eslint-plugin-sort-requires"

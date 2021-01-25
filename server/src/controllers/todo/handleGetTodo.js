@@ -1,8 +1,5 @@
 const TodoService = require('@server/services/todo');
-const {
-  RunTimeErrorCode,
-  TodoErrorCode,
-} = require('@server/constants/error');
+const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { StatusCode } = require('@server/constants/http');
 const { TodoNotFoundError } = require('@server/errors/todo');
 
