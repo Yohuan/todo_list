@@ -1,8 +1,8 @@
 const TodoService = require('@server/services/todo');
+const { generateTodoUrl } = require('@server/utils/todo');
+const { HttpHeader } = require('@server/constants/http');
 const { StatusCode } = require('@server/constants/http');
 const { TodoErrorCode } = require('@server/constants/error');
-const { HttpHeader } = require('@server/constants/http');
-const { generateTodoUrl } = require('@server/utils/todo');
 
 const handleCreateTodo = async (req, res) => {
   const { todoDescription } = req.body;

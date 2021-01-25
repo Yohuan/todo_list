@@ -1,12 +1,12 @@
 const { TodoNotFoundError } = require('@server/errors/todo');
 
-const _createTodoNotFoundError  = (todoId) => new TodoNotFoundError(`Cannot find todo with ID(${todoId})`);
+const _createTodoNotFoundError = (todoId) => new TodoNotFoundError(`Cannot find todo with ID(${todoId})`);
 
 const _createInMemoryStorage = (initialTodos = []) => {
   const _todos = initialTodos;
 
   const _findIdxById = (todoId) => {
-    const targetIdx = _todos.findIndex(todo => todo.id === todoId);
+    const targetIdx = _todos.findIndex((todo) => todo.id === todoId);
     if (targetIdx < 0) {
       throw _createTodoNotFoundError(todoId);
     }
@@ -14,9 +14,7 @@ const _createInMemoryStorage = (initialTodos = []) => {
     return targetIdx;
   };
 
-  const getAllTodos = async () => {
-    return _todos;
-  };
+  const getAllTodos = async () => _todos;
 
   const saveTodo = async (todo) => {
     _todos.push(todo);
@@ -50,7 +48,7 @@ const _createInMemoryStorage = (initialTodos = []) => {
     getTodoById,
     saveTodo,
     updateTodoById,
-  }
+  };
 };
 
 module.exports = _createInMemoryStorage();

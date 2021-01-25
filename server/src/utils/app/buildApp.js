@@ -1,6 +1,6 @@
-const OpenApiValidator = require('express-openapi-validator');
-const SwaggerParser = require("@apidevtools/swagger-parser");
 const express = require('express');
+const OpenApiValidator = require('express-openapi-validator');
+const SwaggerParser = require('@apidevtools/swagger-parser');
 const swaggerUi = require('swagger-ui-express');
 const { connector, summarise } = require('swagger-routes-express');
 
@@ -9,12 +9,11 @@ const apiControllers = require('@server/controllers');
 const buildApp = async ({ apiSpec, isDev = false }) => {
   try {
     await SwaggerParser.validate(apiSpec);
-  }
-  catch (err) {
+  } catch (err) {
     const errorMsg = 'Invalid OpenAPI spec';
     // TODO: use logger
     console.error(errorMsg);
-    throw new Error(errorMsg)
+    throw new Error(errorMsg);
   }
 
   if (isDev) {
@@ -30,17 +29,17 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   // TODO: use gzip compression
   // ex: app.use(compression());
 
-// TODO: validate security
+  // TODO: validate security
   app.use(OpenApiValidator.middleware({
     apiSpec,
     validateRequests: true,
     validateResponses: {
       onError: (error, body) => {
         // TODO: log the error
-        console.log(`Response body fails validation: `, error);
+        console.log('Response body fails validation: ', error);
         console.debug(body);
-      }
-    }
+      },
+    },
   }));
 
   // TODO: add security option
