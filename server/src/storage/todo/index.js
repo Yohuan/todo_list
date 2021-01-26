@@ -1,7 +1,7 @@
-const todoInMemoryStorage = require('./inMemoryStorage');
+const createTodoInMemoryStorage = require('./createInMemoryStorage');
 const todoStorageRegistry = require('./storageRegistry');
 
 module.exports = {
-  todoInMemoryStorage,
+  createTodoInMemoryStorage,
   todoStorageRegistry,
 };

@@ -3,7 +3,7 @@ const { TodoNotFoundError } = require('@server/errors/todo');
 const _createTodoNotFoundError = todoId =>
   new TodoNotFoundError(`Cannot find todo with ID(${todoId})`);
 
-const _createInMemoryStorage = (initialTodos = []) => {
+module.exports = (initialTodos = []) => {
   const _todos = initialTodos;
 
   const _findIdxById = todoId => {
@@ -51,5 +51,3 @@ const _createInMemoryStorage = (initialTodos = []) => {
     updateTodoById,
   };
 };
-
-module.exports = _createInMemoryStorage();
