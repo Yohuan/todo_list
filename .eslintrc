@@ -35,6 +35,12 @@
       ],
       "newlines-between": "always"
     }],
+    "jest/expect-expect": ["error", {
+      "assertFunctionNames": [
+        "expect",
+        "request.**.expect"
+      ]
+    }],
     "no-console": ["warn"],
     "no-underscore-dangle": ["off"],
     "no-unused-vars": ["error", {
