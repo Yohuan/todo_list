@@ -1,3 +1,6 @@
-const { todoInMemoryStorage } = require('@server/storage/todo');
+const { todoStorageRegistry } = require('@server/storage/todo');
 
-module.exports = async () => todoInMemoryStorage.getAllTodos();
+module.exports = async () => {
+  const todoStorage = todoStorageRegistry.getStorage();
+  return todoStorage.getAllTodos();
+};

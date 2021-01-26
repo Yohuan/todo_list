@@ -1,7 +1,8 @@
-const { todoInMemoryStorage } = require('@server/storage/todo');
+const { todoStorageRegistry } = require('@server/storage/todo');
 
 module.exports = async (todoId, { description, isCompleted }) => {
-  await todoInMemoryStorage.updateTodoById(todoId, {
+  const todoStorage = todoStorageRegistry.getStorage();
+  await todoStorage.updateTodoById(todoId, {
     description,
     isCompleted,
   });

@@ -6,6 +6,7 @@ const dotdev = require('dotenv');
 const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
+const { createTodoInMemoryStorage, todoStorageRegistry } = require('@server/storage/todo');
 
 const envFile = path.join(process.cwd(), process.env.ENV_FILE);
 dotdev.config({ path: envFile });
@@ -13,6 +14,9 @@ dotdev.config({ path: envFile });
 // TODO: put port as env variable
 const _PORT = 5566;
 const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yaml');
+
+const todoInMemoryStorage = createTodoInMemoryStorage();
+todoStorageRegistry.register(todoInMemoryStorage);
 
 const main = async () => {
   let app = null;
