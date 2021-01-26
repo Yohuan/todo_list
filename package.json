@@ -14,7 +14,10 @@
     "run_server": "ENV_FILE=./server/config/env/.env.prod node ./server/run_server.js",
     "run_server:dev": "ENV_FILE=./server/config/env/.env.dev nodemon ./server/run_server.js",
     "lint": "eslint --no-eslintrc --config ./.eslintrc './server/**/*.js'",
-    "lint:fix": "eslint --no-eslintrc --config ./.eslintrc --fix './server/**/*.js'"
+    "lint:fix": "eslint --no-eslintrc --config ./.eslintrc --fix './server/**/*.js'",
+    "test": "jest --color",
+    "test:watch": "jest --watch --color",
+    "test:coverage": "jest --coverage --color"
   },
   "jest": {
     "testRegex": "/.*(\\.)(test)\\.js$",
