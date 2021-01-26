@@ -51,7 +51,7 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
   connect(app);
 
   // serve OpenAPI document
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
+  app.use('/api_docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 
   // TODO: add customized error handling middleware
   app.use((err, req, res, next) => {
