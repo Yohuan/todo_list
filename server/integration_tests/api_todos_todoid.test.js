@@ -93,3 +93,93 @@ describe('GET /api/todos/{todoId}', () => {
       });
   });
 });
+
+describe('PUT /api/todos/{todoId}', () => {
+  it('should return 204 when success', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .put(`/api/todos/${todoId}`)
+      .send({
+        id: todoId,
+        description: 'modified todo',
+        isCompleted: true,
+      })
+      .expect(204);
+  });
+  it('should modify an existing todo', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .put(`/api/todos/${todoId}`)
+      .send({
+        id: todoId,
+        description: 'modified todo',
+        isCompleted: true,
+      })
+      .then(() => {
+        return request(app)
+          .get(`/api/todos/${todoId}`)
+          .expect(res => {
+            expect(res.body).toEqual({
+              id: 'abcdef',
+              description: 'modified todo',
+              isCompleted: true,
+            });
+          });
+      });
+  });
+  it('should return 400 with error code when the input Id does not match', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .put(`/api/todos/${todoId}`)
+      .send({
+        id: 'another-todo-id',
+        description: 'modified todo',
+        isCompleted: true,
+      })
+      .expect(400)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(TodoErrorCode.ID_NOT_MATCH);
+      });
+  });
+  it('should return 404 with error code when giving non-existing ID', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'non-exiting-id';
+    return request(app)
+      .put(`/api/todos/${todoId}`)
+      .send({
+        id: todoId,
+        description: 'modified todo',
+        isCompleted: true,
+      })
+      .expect(404)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(TodoErrorCode.NOT_FOUND_ERROR);
+      });
+  });
+  it('should return 500 with error code when storage fails', () => {
+    _initializeFailedTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .put(`/api/todos/${todoId}`)
+      .send({
+        id: todoId,
+        description: 'modified todo',
+        isCompleted: true,
+      })
+      .expect(500)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(RunTimeErrorCode.UNKNOWN);
+      });
+  });
+});
