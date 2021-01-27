@@ -11,6 +11,8 @@ const handleGetTodos = async (req, res) => {
       code: TodoErrorCode.FETCHING_ERROR,
       message: 'Cannot fetch todos',
     });
+
+    return;
   }
 
   res.status(StatusCode.OK_200).json(todos);
