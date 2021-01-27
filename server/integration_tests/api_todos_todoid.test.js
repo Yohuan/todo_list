@@ -183,3 +183,44 @@ describe('PUT /api/todos/{todoId}', () => {
       });
   });
 });
+
+describe('DELETE /api/todos/{todoId}', () => {
+  it('should return 204 when success', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app).delete(`/api/todos/${todoId}`).expect(204);
+  });
+  it('should delete an existing todo', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .delete(`/api/todos/${todoId}`)
+      .then(() => {
+        return request(app).get(`/api/todos/${todoId}`).expect(404);
+      });
+  });
+  it('should be idempotent', () => {
+    _initializeTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .delete(`/api/todos/${todoId}`)
+      .then(() => {
+        return request(app).delete(`/api/todos/${todoId}`).expect(204);
+      });
+  });
+  it('should return 500 with error code when storage fails', () => {
+    _initializeFailedTodoStorage();
+
+    const todoId = 'abcdef';
+    return request(app)
+      .delete(`/api/todos/${todoId}`)
+      .expect(500)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(RunTimeErrorCode.UNKNOWN);
+      });
+  });
+});
