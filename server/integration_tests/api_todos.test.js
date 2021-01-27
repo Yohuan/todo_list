@@ -6,10 +6,12 @@ const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
 const { createTodoInMemoryStorage, todoStorageRegistry } = require('@server/storage/todo');
+const { HttpHeader } = require('@server/constants/http');
 const { resetForTesting } = require('@server/storage/todo/storageRegistry');
 const { TodoErrorCode } = require('@server/constants/error');
 
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
+const _JSON_REGEX = /application\/json/;
 
 const _INITIAL_TODOS = [
   {
@@ -53,7 +55,7 @@ describe('GET /api/todos', () => {
 
     return request(app)
       .get('/api/todos')
-      .expect('Content-Type', /application\/json/)
+      .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(200)
       .expect(res => {
         expect(res.body).toEqual(_INITIAL_TODOS);
@@ -64,7 +66,7 @@ describe('GET /api/todos', () => {
 
     return request(app)
       .get('/api/todos')
-      .expect('Content-Type', /application\/json/)
+      .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(500)
       .expect(res => {
         const { code } = res.body;
@@ -80,7 +82,7 @@ describe('POST /api/todos', () => {
     return request(app)
       .post('/api/todos')
       .send({ todoDescription: 'a new todo' })
-      .expect('Content-Type', /application\/json/)
+      .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(201)
       .expect(res => {
         const { todoId } = res.body;
@@ -94,7 +96,7 @@ describe('POST /api/todos', () => {
     return request(app)
       .post('/api/todos')
       .send({ todoDescription: 'a new todo' })
-      .expect('Content-Type', /application\/json/)
+      .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(500)
       .expect(res => {
         const { code } = res.body;
