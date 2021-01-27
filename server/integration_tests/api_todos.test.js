@@ -5,9 +5,8 @@ const request = require('supertest');
 const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
-const { createTodoInMemoryStorage, todoStorageRegistry } = require('@server/storage/todo');
 const { HttpHeader } = require('@server/constants/http');
-const { resetForTesting } = require('@server/storage/todo/storageRegistry');
+const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
 const { TodoErrorCode } = require('@server/constants/error');
 
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
@@ -32,17 +31,7 @@ const _prepareTestingApp = async () => {
   return buildApp({ apiSpec });
 };
 
-const _initializeTodoStorage = () => {
-  resetForTesting();
-  const todoInMemoryStorage = createTodoInMemoryStorage(_INITIAL_TODOS);
-  todoStorageRegistry.register(todoInMemoryStorage);
-};
-
-const _initializeFailedTodoStorage = () => {
-  resetForTesting();
-  const failedTodoStorage = null; // any operation on this storage will fail
-  todoStorageRegistry.register(failedTodoStorage);
-};
+const _initializeTodoStorage = () => initializeTodoStorage(_INITIAL_TODOS);
 
 let app;
 beforeAll(async () => {
@@ -62,7 +51,7 @@ describe('GET /api/todos', () => {
       });
   });
   it('should return 500 with error code when storage fails', () => {
-    _initializeFailedTodoStorage();
+    initializeFailedTodoStorage();
 
     return request(app)
       .get('/api/todos')
@@ -91,7 +80,7 @@ describe('POST /api/todos', () => {
       });
   });
   it('should return 500 with error code when storage fails', () => {
-    _initializeFailedTodoStorage();
+    initializeFailedTodoStorage();
 
     return request(app)
       .post('/api/todos')
