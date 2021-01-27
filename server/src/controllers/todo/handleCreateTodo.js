@@ -15,6 +15,8 @@ const handleCreateTodo = async (req, res) => {
       code: TodoErrorCode.CREATION_ERROR,
       message: 'Cannot create a todo.',
     });
+
+    return;
   }
 
   res.set(HttpHeader.LOCATION, generateTodoUrl(todoId));

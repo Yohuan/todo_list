@@ -55,6 +55,7 @@ const buildApp = async ({ apiSpec, isDev = false }) => {
 
   // TODO: add customized error handling middleware
   app.use((err, req, res, next) => {
+    // TODO: returned customized error code for 400 Bad Request
     res.status(err.status || 500).json({
       message: err.message,
       errors: err.errors,

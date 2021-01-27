@@ -1,4 +1,5 @@
 const HttpHeader = {
+  CONTENT_TYPE: 'Content-Type',
   LOCATION: 'Location',
 };
 
