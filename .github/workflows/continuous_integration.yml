@@ -1,0 +1,16 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - main
+      - test_ci
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test using jest
+        uses: actions/checkout@v2
+        with:
+          node-version: '14.15.4'
+      - run: yarn install
+      - run: yarn test
