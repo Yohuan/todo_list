@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Test using jest
+      - name: Set up NodeJS env
         uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
-      - run: yarn install
-      - run: yarn test
+      - name: Install packages
+        run: yarn install
+      - name: Lint the code using ESLint
+        run: yarn lint
+      - name: Test using Jest
+        run: yarn test
