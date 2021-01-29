@@ -5,11 +5,11 @@ on:
       - main
       - test_ci
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up NodeJS env
+      - name: Set up NodeJS
         uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
@@ -18,4 +18,4 @@ jobs:
       - name: Lint the code using ESLint
         run: yarn lint
       - name: Test using Jest
-        run: yarn test
+        run: yarn test:coverage
