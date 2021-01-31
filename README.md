@@ -1,10 +1,13 @@
 # Yohuan's Todo List 📝
 
-![Badge][badge]
+![][statement-coverage-badge] ![][branch-coverage-badge] ![][function-coverage-badge] ![][line-coverage-badge]
 
 This is a project for self practicing.
 
-[badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/jest_coverage.json
+[statement-coverage-badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/jest_statement_coverage.json
+[branch-coverage-badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/jest_branch_coverage.json
+[function-coverage-badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/jest_function_coverage.json
+[line-coverage-badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/jest_line_coverage.json
 
 # Objective
 

@@ -37,8 +37,14 @@ jobs:
         id: parse-test-coverage
         run: |
           statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
+          branch_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Branches | awk '{print $3}')
+          function_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Functions | awk '{print $3}')
+          line_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Lines | awk '{print $3}')
           echo ::set-output name=statement_coverage::"${statement_coverage}"
-      - name: Generate badge for statement test coverage
+          echo ::set-output name=branch_coverage::"${branch_coverage}"
+          echo ::set-output name=function_coverage::"${function_coverage}"
+          echo ::set-output name=line_coverage::"${line_coverage}"
+      - name: Generate badge for statement coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
@@ -46,4 +52,31 @@ jobs:
           filename: jest_statement_coverage.json
           label: "Coverage:statements"
           message: ${{ steps.parse-test-coverage.outputs.statement_coverage }}
+          color: orange
+      - name: Generate badge for branch coverage
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ secrets.GIST_ID }}
+          filename: jest_branch_coverage.json
+          label: "Coverage:branches"
+          message: ${{ steps.parse-test-coverage.outputs.branch_coverage }}
+          color: orange
+      - name: Generate badge for function coverage
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ secrets.GIST_ID }}
+          filename: jest_function_coverage.json
+          label: "Coverage:functions"
+          message: ${{ steps.parse-test-coverage.outputs.function_coverage }}
+          color: orange
+      - name: Generate badge for line coverage
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ secrets.GIST_ID }}
+          filename: jest_line_coverage.json
+          label: "Coverage:lines"
+          message: ${{ steps.parse-test-coverage.outputs.line_coverage }}
           color: orange
