@@ -8,7 +8,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     outputs:
-      test_coverage: ${{ steps.parse_test_coverage.outputs.coverage }}
+      test_coverage_report: ${{ steps.test_with_jest.outputs.coverage_report }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up NodeJS
@@ -22,11 +22,11 @@ jobs:
       - name: Test using Jest
         id: test_with_jest
         run: |
-          test_stdout=$(yarn test:coverage --coverageReporters=text-summary)
-          test_stdout="${test_stdout//'%'/'%25'}"
-          test_stdout="${test_stdout//$'\n'/'%0A'}"
-          test_stdout="${test_stdout//$'\r'/'%0D'}"
-          echo ::set-output name=test_coverage::"${test_stdout}"
+          coverage_report=$(yarn test:coverage --coverageReporters=text-summary)
+          coverage_report="${coverage_report//'%'/'%25'}"
+          coverage_report="${coverage_report//$'\n'/'%0A'}"
+          coverage_report="${coverage_report//$'\r'/'%0D'}"
+          echo ::set-output name=coverage_report::"${coverage_report}"
   generate-badge:
     needs: lint-and-test
     name: Generate test badge
@@ -35,7 +35,7 @@ jobs:
       - name: Parse test coverage
         id: parse_test_coverage
         run: |
-          coverage=$(echo "${{ needs.lint-and-test.outputs.test_coverage }}" | grep Statements | awk '{print $3}')
+          coverage=$(echo "${{ needs.lint-and-test.outputs.test_coverage_report }}" | grep Statements | awk '{print $3}')
           echo ${coverage}
           echo ::set-output name=coverage::"${coverage}"
       - name: Create Awesome Badge
