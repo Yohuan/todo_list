@@ -9,7 +9,7 @@ jobs:
     name: Lint and test
     runs-on: ubuntu-latest
     outputs:
-      test_coverage_report: ${{ steps.test_with_jest.outputs.coverage_report }}
+      test-coverage-report: ${{ steps.test-with-jest.outputs.coverage_report }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up NodeJS
@@ -21,7 +21,7 @@ jobs:
       - name: Lint the code using ESLint
         run: yarn lint
       - name: Test using Jest
-        id: test_with_jest
+        id: test-with-jest
         run: |
           coverage_report=$(yarn test:coverage --coverageReporters=text-summary)
           coverage_report="${coverage_report//'%'/'%25'}"
@@ -34,9 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Parse test coverage
-        id: parse_test_coverage
+        id: parse-test-coverage
         run: |
-          coverage=$(echo "${{ needs.lint-and-test.outputs.test_coverage_report }}" | grep Statements | awk '{print $3}')
+          coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
           echo ${coverage}
           echo ::set-output name=coverage::"${coverage}"
       - name: Generate test coverage badge
@@ -46,5 +46,5 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_coverage.json
           label: Coverage
-          message: ${{ steps.parse_test_coverage.outputs.coverage }}
+          message: ${{ steps.parse-test-coverage.outputs.coverage }}
           color: orange
