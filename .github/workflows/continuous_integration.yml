@@ -18,9 +18,12 @@ jobs:
       - name: Lint the code using ESLint
         run: yarn lint
       - name: Test using Jest
+        id: test_with_jest
         run: |
           test_stdout=$(yarn test:coverage --coverageReporters=text-summary)
           echo "::set-output name=test_coverage::${test_stdout}"
+      - name: Parse test coverage
+        run: echo "${{ steps.test_with_jest.outputs.test_coverage }}"
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
