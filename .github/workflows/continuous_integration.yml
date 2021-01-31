@@ -24,8 +24,6 @@ jobs:
           test_stdout="${test_stdout//'%'/'%25'}"
           test_stdout="${test_stdout//$'\n'/'%0A'}"
           test_stdout="${test_stdout//$'\r'/'%0D'}"
-          echo "test_stdout"
-          echo ${test_stdout}
           echo ::set-output name=test_coverage::"${test_stdout}"
       - name: Parse test coverage
         run: echo "${{ steps.test_with_jest.outputs.test_coverage }}"
