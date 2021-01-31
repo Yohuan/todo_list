@@ -36,14 +36,14 @@ jobs:
       - name: Parse test coverage
         id: parse-test-coverage
         run: |
-          coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
-          echo ::set-output name=coverage::"${coverage}"
-      - name: Generate test coverage badge
+          statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
+          echo ::set-output name=statement_coverage::"${statement_coverage}"
+      - name: Generate badge for statement test coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: ${{ secrets.GIST_ID }}
-          filename: jest_coverage.json
-          label: Coverage
-          message: ${{ steps.parse-test-coverage.outputs.coverage }}
+          filename: jest_statement_coverage.json
+          label: "Coverage:statements"
+          message: ${{ steps.parse-test-coverage.outputs.statement_coverage }}
           color: orange
