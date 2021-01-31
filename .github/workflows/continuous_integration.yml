@@ -53,14 +53,25 @@ jobs:
         id: assign-badge-colors
         run: |
           source ./scripts/ci_utils.sh
+          test_result_color=$(get_test_result_color "${{ needs.lint-and-test.outputs.test-result }}")
           statement_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.statement_coverage }}")
           branch_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.branch_coverage }}")
           function_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.function_coverage }}")s
           line_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.line_coverage }}")
+          echo ::set-output name=test_result_color::"${test_result_color}"
           echo ::set-output name=statement_coverage_color::"${statement_coverage_color}"
           echo ::set-output name=branch_coverage_color::"${branch_coverage_color}"
           echo ::set-output name=function_coverage_color::"${function_coverage_color}"
           echo ::set-output name=line_coverage_color::"${line_coverage_color}"
+      - name: Generate badge for test result
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ secrets.GIST_ID }}
+          filename: jest_test_result.json
+          label: "Test"
+          message: ${{ needs.lint-and-test.outputs.test-result }}
+          color: ${{ steps.assign-badge-colors.outputs.test_result_color }}
       - name: Generate badge for statement coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
