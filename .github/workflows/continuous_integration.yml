@@ -26,7 +26,9 @@ jobs:
           test_stdout="${test_stdout//$'\r'/'%0D'}"
           echo ::set-output name=test_coverage::"${test_stdout}"
       - name: Parse test coverage
-        run: echo "${{ steps.test_with_jest.outputs.test_coverage }}"
+        run: |
+          coverage=$(echo "${{ steps.test_with_jest.outputs.test_coverage }}" | grep Statements | awk '{print $3}')
+          echo ::set-output name=coverage::"${coverage}"
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
