@@ -4,7 +4,7 @@
 
 This is a project for self practicing.
 
-[badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/2ab8f1d386f13aaebccbd87dac94068d/raw/bf6ada028ab1a0b1b3828be2dc6d1c7312a926bb/hello-world.json
+[badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Yohuan/d9f55aaede2b2fa01fadae7530f9849d/raw/f4087b68477f13402c05da3b0ca82a5ef722e76e/jest_coverage.json
 
 # Objective
 
