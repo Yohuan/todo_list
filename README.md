@@ -1,6 +1,10 @@
 # Yohuan's Todo List 📝
 
+![Badge][badge]
+
 This is a project for self practicing.
+
+[badge]: https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/2ab8f1d386f13aaebccbd87dac94068d/raw/bf6ada028ab1a0b1b3828be2dc6d1c7312a926bb/hello-world.json
 
 # Objective
 
