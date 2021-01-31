@@ -12,10 +12,19 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: '14.15.4'
+          node-version: "14.15.4"
       - name: Install packages
         run: yarn install
       - name: Lint the code using ESLint
         run: yarn lint
       - name: Test using Jest
         run: yarn test:coverage
+      - name: Create Awesome Badge
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ secrets.GIST_ID }}
+          filename: jest_coverage.json
+          label: Hello
+          message: Yohuan
+          color: orange
