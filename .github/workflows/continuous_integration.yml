@@ -64,7 +64,7 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_statement_coverage.json
           label: "Coverage:statements"
-          message: ${{ steps.parse-test-coverage.outputs.statement_coverage }}
+          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.statement_coverage) }}
           color: ${{ steps.assign-badge-colors.outputs.statement_coverage_color }}
       - name: Generate badge for branch coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
@@ -73,7 +73,7 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_branch_coverage.json
           label: "Coverage:branches"
-          message: ${{ steps.parse-test-coverage.outputs.branch_coverage }}
+          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.branch_coverage) }}
           color: ${{ steps.assign-badge-colors.outputs.branch_coverage_color }}
       - name: Generate badge for function coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
@@ -82,7 +82,7 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_function_coverage.json
           label: "Coverage:functions"
-          message: ${{ steps.parse-test-coverage.outputs.function_coverage }}
+          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.function_coverage) }}
           color: ${{ steps.assign-badge-colors.outputs.function_coverage_color }}
       - name: Generate badge for line coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
@@ -91,5 +91,5 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_line_coverage.json
           label: "Coverage:lines"
-          message: ${{ steps.parse-test-coverage.outputs.line_coverage }}
+          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.line_coverage) }}
           color: ${{ steps.assign-badge-colors.outputs.line_coverage_color }}
