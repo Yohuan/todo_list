@@ -33,17 +33,30 @@ jobs:
     name: Generate badges
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Parse test coverage
         id: parse-test-coverage
         run: |
-          statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
-          branch_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Branches | awk '{print $3}')
-          function_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Functions | awk '{print $3}')
-          line_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Lines | awk '{print $3}')
+          statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}' | sed 's/.$//')
+          branch_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Branches | awk '{print $3}' | sed 's/.$//')
+          function_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Functions | awk '{print $3}' | sed 's/.$//')
+          line_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Lines | awk '{print $3}' | sed 's/.$//')
           echo ::set-output name=statement_coverage::"${statement_coverage}"
           echo ::set-output name=branch_coverage::"${branch_coverage}"
           echo ::set-output name=function_coverage::"${function_coverage}"
           echo ::set-output name=line_coverage::"${line_coverage}"
+      - name: Assign badge colors
+        id: assign-badge-colors
+        run: |
+          source ./scripts/ci_utils.sh
+          statement_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.statement_coverage }}")
+          branch_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.branch_coverage }}")
+          function_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.function_coverage }}")s
+          line_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.line_coverage }}")
+          echo ::set-output name=statement_coverage_color::"${statement_coverage_color}"
+          echo ::set-output name=branch_coverage_color::"${branch_coverage_color}"
+          echo ::set-output name=function_coverage_color::"${function_coverage_color}"
+          echo ::set-output name=line_coverage_color::"${line_coverage_color}"
       - name: Generate badge for statement coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -52,7 +65,7 @@ jobs:
           filename: jest_statement_coverage.json
           label: "Coverage:statements"
           message: ${{ steps.parse-test-coverage.outputs.statement_coverage }}
-          color: orange
+          color: ${{ steps.assign-badge-colors.outputs.statement_coverage_color }}
       - name: Generate badge for branch coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -61,7 +74,7 @@ jobs:
           filename: jest_branch_coverage.json
           label: "Coverage:branches"
           message: ${{ steps.parse-test-coverage.outputs.branch_coverage }}
-          color: orange
+          color: ${{ steps.assign-badge-colors.outputs.branch_coverage_color }}
       - name: Generate badge for function coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -70,7 +83,7 @@ jobs:
           filename: jest_function_coverage.json
           label: "Coverage:functions"
           message: ${{ steps.parse-test-coverage.outputs.function_coverage }}
-          color: orange
+          color: ${{ steps.assign-badge-colors.outputs.function_coverage_color }}
       - name: Generate badge for line coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -79,4 +92,4 @@ jobs:
           filename: jest_line_coverage.json
           label: "Coverage:lines"
           message: ${{ steps.parse-test-coverage.outputs.line_coverage }}
-          color: orange
+          color: ${{ steps.assign-badge-colors.outputs.line_coverage_color }}
