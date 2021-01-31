@@ -37,7 +37,6 @@ jobs:
         id: parse-test-coverage
         run: |
           coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}')
-          echo ${coverage}
           echo ::set-output name=coverage::"${coverage}"
       - name: Generate test coverage badge
         uses: schneegans/dynamic-badges-action@v1.0.0
