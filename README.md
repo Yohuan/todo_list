@@ -43,6 +43,7 @@ Hope this project could make myself more familiar with web developments.
 - Docker (compose)
 - Nginx
 - Github
+  - Workflow
 - VSCode REST Client
 
 # Features
