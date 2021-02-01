@@ -40,7 +40,8 @@ Hope this project could make myself more familiar with web developments.
 - Swagger
 - SQL database
 - Redis
-- Docker (compose)
+- Docker
+  - Compose
 - Nginx
 - Github
   - Workflow
