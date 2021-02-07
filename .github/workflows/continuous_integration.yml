@@ -38,9 +38,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: coverage-summary
+          name: coverage_report
           path: ./jest/coverage/coverage-summary.json
-  generate-badge:
+  generate_badges:
     name: Generate badges
     needs: test
     if: always()
@@ -56,9 +56,9 @@ jobs:
       - name: Download test coverage report
         uses: actions/download-artifact@v2
         with:
-          name: coverage-summary
+          name: coverage_report
       - name: Parse test coverage
-        id: parse_test_coverage
+        id: parse_test_coverages
         run: |
           statement_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t statements)
           branch_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t branches)
@@ -73,10 +73,10 @@ jobs:
         run: |
           source ./scripts/ci_utils.sh
           test_result_color=$(get_test_result_color "${{ needs.test.outputs.test_result }}")
-          statement_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.statement_coverage }}")
-          branch_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.branch_coverage }}")
-          function_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.function_coverage }}")s
-          line_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.line_coverage }}")
+          statement_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.statement_coverage }}")
+          branch_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.branch_coverage }}")
+          function_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.function_coverage }}")s
+          line_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.line_coverage }}")
           echo ::set-output name=test_result_color::"${test_result_color}"
           echo ::set-output name=statement_coverage_color::"${statement_coverage_color}"
           echo ::set-output name=branch_coverage_color::"${branch_coverage_color}"
