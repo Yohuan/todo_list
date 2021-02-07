@@ -41,8 +41,8 @@ jobs:
           name: coverage-summary
           path: ./jest/coverage/coverage-summary.json
   generate-badge:
-    needs: test
     name: Generate badges
+    needs: test
     if: always()
     runs-on: ubuntu-latest
     steps:
