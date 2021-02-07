@@ -39,6 +39,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "14.15.4"
+      - name: Install packages
+        run: yarn install
       - name: Download test coverage report
         uses: actions/download-artifact@v2
         with:
