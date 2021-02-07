@@ -23,15 +23,7 @@ jobs:
         run: yarn lint
       - name: Test using Jest
         id: test-with-jest
-        run: |
-          source ./scripts/ci_utils.sh
-          coverage_report=$(yarn test:coverage --coverageReporters=text-summary)
-          test_result=$(get_test_result $?)
-          echo ::set-output name=test_result::"${test_result}"
-          coverage_report="${coverage_report//'%'/'%25'}"
-          coverage_report="${coverage_report//$'\n'/'%0A'}"
-          coverage_report="${coverage_report//$'\r'/'%0D'}"
-          echo ::set-output name=coverage_report::"${coverage_report}"
+        run: yarn test:coverage --coverageReporters=json-summary
   generate-badge:
     needs: lint-and-test
     name: Generate badges
