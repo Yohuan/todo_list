@@ -24,13 +24,20 @@ get_test_result() {
   echo "Fail"
 }
 
-# ex: get_test_result Pass
-# ex: get_test_result Fail
+# ex: get_test_result_color success
+# ex: get_test_result_color failure
+# ex: get_test_result_color cancelled
+# ex: get_test_result_color skipped
 get_test_result_color() {
-  if [[ $1 == "Pass" ]]; then
+  if [[ $1 == "success" ]]; then
     echo "brightgreen"
     return 0
   fi
 
-  echo "red"
+  if [[ $1 == "failure" ]]; then
+    echo "red"
+    return 0
+  fi
+
+  echo "yellow"
 }
