@@ -13,17 +13,6 @@ get_test_coverage_color() {
   echo "red"
 }
 
-# ex: get_test_result 0
-# ex: get_test_result 1
-get_test_result() {
-  if [[ $1 == "0" ]]; then
-    echo "Pass"
-    return 0
-  fi
-
-  echo "Fail"
-}
-
 # ex: get_test_result_color success
 # ex: get_test_result_color failure
 # ex: get_test_result_color cancelled
