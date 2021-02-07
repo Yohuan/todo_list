@@ -18,6 +18,7 @@ parser.add_argument('-t', '--coverage-type', {
   help: 'The target coverage type',
   dest: 'coverageType',
   type: 'str',
+  choices: ['statements', 'branches', 'functions', 'lines'],
   required: true,
 });
 
