@@ -5,8 +5,21 @@ on:
       - main
       - test_ci
 jobs:
-  lint-and-test:
-    name: Lint and test
+  lint:
+    name: Lint the code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.15.4"
+      - name: Install packages
+        run: yarn install
+      - name: Lint using ESLint
+        run: yarn lint
+  test:
+    name: Test the code
     runs-on: ubuntu-latest
     outputs:
       test-coverage-report: ${{ steps.test-with-jest.outputs.coverage_report }}
@@ -19,8 +32,6 @@ jobs:
           node-version: "14.15.4"
       - name: Install packages
         run: yarn install
-      - name: Lint the code using ESLint
-        run: yarn lint
       - name: Test using Jest
         id: test-with-jest
         run: yarn test:coverage --coverageReporters=json-summary
@@ -31,7 +42,7 @@ jobs:
           name: coverage-summary
           path: ./jest/coverage/coverage-summary.json
   generate-badge:
-    needs: lint-and-test
+    needs: test
     name: Generate badges
     if: always()
     runs-on: ubuntu-latest
