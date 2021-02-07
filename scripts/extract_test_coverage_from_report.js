@@ -4,11 +4,11 @@ const fs = require('fs');
 const { ArgumentParser } = require('argparse');
 
 const parser = new ArgumentParser({
-  description: 'Parse jest test coverage',
+  description: 'Extract jest test coverage from the given test report',
 });
 
 parser.add_argument('-f', '--coverage-file', {
-  help: 'The jest test coverage file in json format',
+  help: 'The jest coverage report file in json format',
   dest: 'inputFile',
   type: 'str',
   required: true,
