@@ -42,10 +42,10 @@ jobs:
       - name: Parse test coverage
         id: parse-test-coverage
         run: |
-          statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}' | sed 's/.$//')
-          branch_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Branches | awk '{print $3}' | sed 's/.$//')
-          function_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Functions | awk '{print $3}' | sed 's/.$//')
-          line_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Lines | awk '{print $3}' | sed 's/.$//')
+          statement_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t statements)
+          branch_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t branches)
+          function_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t functions)
+          line_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t lines)
           echo ::set-output name=statement_coverage::"${statement_coverage}"
           echo ::set-output name=branch_coverage::"${branch_coverage}"
           echo ::set-output name=function_coverage::"${function_coverage}"
