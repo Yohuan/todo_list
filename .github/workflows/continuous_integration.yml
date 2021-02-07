@@ -25,6 +25,7 @@ jobs:
         id: test-with-jest
         run: yarn test:coverage --coverageReporters=json-summary
       - name: Upload test coverage report
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: coverage-summary
@@ -32,6 +33,7 @@ jobs:
   generate-badge:
     needs: lint-and-test
     name: Generate badges
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
