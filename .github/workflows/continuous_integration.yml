@@ -24,6 +24,11 @@ jobs:
       - name: Test using Jest
         id: test-with-jest
         run: yarn test:coverage --coverageReporters=json-summary
+      - name: Upload test coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-summary
+          path: ./jest/coverage/coverage-summary.json
   generate-badge:
     needs: lint-and-test
     name: Generate badges
