@@ -6,7 +6,7 @@ on:
       - test_ci
 jobs:
   lint:
-    name: Lint the code
+    name: Lint code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,11 +19,10 @@ jobs:
       - name: Lint using ESLint
         run: yarn lint
   test:
-    name: Test the code
+    name: Test code
     runs-on: ubuntu-latest
     outputs:
-      test-coverage-report: ${{ steps.test-with-jest.outputs.coverage_report }}
-      test-result: ${{ steps.test-with-jest.outcome }}
+      test_result: ${{ steps.test_with_jest.outcome }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up NodeJS
@@ -33,17 +32,17 @@ jobs:
       - name: Install packages
         run: yarn install
       - name: Test using Jest
-        id: test-with-jest
+        id: test_with_jest
         run: yarn test:coverage --coverageReporters=json-summary
       - name: Upload test coverage report
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: coverage-summary
+          name: coverage_report
           path: ./jest/coverage/coverage-summary.json
-  generate-badge:
-    needs: test
+  generate_badges:
     name: Generate badges
+    needs: test
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -57,9 +56,9 @@ jobs:
       - name: Download test coverage report
         uses: actions/download-artifact@v2
         with:
-          name: coverage-summary
+          name: coverage_report
       - name: Parse test coverage
-        id: parse-test-coverage
+        id: parse_test_coverages
         run: |
           statement_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t statements)
           branch_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t branches)
@@ -70,15 +69,14 @@ jobs:
           echo ::set-output name=function_coverage::"${function_coverage}"
           echo ::set-output name=line_coverage::"${line_coverage}"
       - name: Assign badge colors
-        id: assign-badge-colors
+        id: assign_badge_colors
         run: |
           source ./scripts/ci_utils.sh
-          echo ${{ needs.test.outputs.test-result }}
-          test_result_color=$(get_test_result_color "${{ needs.test.outputs.test-result }}")
-          statement_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.statement_coverage }}")
-          branch_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.branch_coverage }}")
-          function_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.function_coverage }}")s
-          line_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.line_coverage }}")
+          test_result_color=$(get_test_result_color "${{ needs.test.outputs.test_result }}")
+          statement_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.statement_coverage }}")
+          branch_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.branch_coverage }}")
+          function_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.function_coverage }}")s
+          line_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverages.outputs.line_coverage }}")
           echo ::set-output name=test_result_color::"${test_result_color}"
           echo ::set-output name=statement_coverage_color::"${statement_coverage_color}"
           echo ::set-output name=branch_coverage_color::"${branch_coverage_color}"
@@ -91,8 +89,8 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_test_result.json
           label: "Test"
-          message: ${{ needs.test.outputs.test-result }}
-          color: ${{ steps.assign-badge-colors.outputs.test_result_color }}
+          message: ${{ needs.test.outputs.test_result }}
+          color: ${{ steps.assign_badge_colors.outputs.test_result_color }}
       - name: Generate badge for statement coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -100,8 +98,8 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_statement_coverage.json
           label: "Coverage:statements"
-          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.statement_coverage) }}
-          color: ${{ steps.assign-badge-colors.outputs.statement_coverage_color }}
+          message: ${{ format('{0}%', steps.parse_test_coverages.outputs.statement_coverage) }}
+          color: ${{ steps.assign_badge_colors.outputs.statement_coverage_color }}
       - name: Generate badge for branch coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -109,8 +107,8 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_branch_coverage.json
           label: "Coverage:branches"
-          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.branch_coverage) }}
-          color: ${{ steps.assign-badge-colors.outputs.branch_coverage_color }}
+          message: ${{ format('{0}%', steps.parse_test_coverages.outputs.branch_coverage) }}
+          color: ${{ steps.assign_badge_colors.outputs.branch_coverage_color }}
       - name: Generate badge for function coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -118,8 +116,8 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_function_coverage.json
           label: "Coverage:functions"
-          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.function_coverage) }}
-          color: ${{ steps.assign-badge-colors.outputs.function_coverage_color }}
+          message: ${{ format('{0}%', steps.parse_test_coverages.outputs.function_coverage) }}
+          color: ${{ steps.assign_badge_colors.outputs.function_coverage_color }}
       - name: Generate badge for line coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
@@ -127,5 +125,5 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_line_coverage.json
           label: "Coverage:lines"
-          message: ${{ format('{0}%', steps.parse-test-coverage.outputs.line_coverage) }}
-          color: ${{ steps.assign-badge-colors.outputs.line_coverage_color }}
+          message: ${{ format('{0}%', steps.parse_test_coverages.outputs.line_coverage) }}
+          color: ${{ steps.assign_badge_colors.outputs.line_coverage_color }}
