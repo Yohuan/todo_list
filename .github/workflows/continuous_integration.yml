@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       test-coverage-report: ${{ steps.test-with-jest.outputs.coverage_report }}
+      test-result: ${{ steps.test-with-jest.outputs.test_result }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up NodeJS
@@ -23,7 +24,10 @@ jobs:
       - name: Test using Jest
         id: test-with-jest
         run: |
+          source ./scripts/ci_utils.sh
           coverage_report=$(yarn test:coverage --coverageReporters=text-summary)
+          test_result=$(get_test_result $?)
+          echo ::set-output name=test_result::"${test_result}"
           coverage_report="${coverage_report//'%'/'%25'}"
           coverage_report="${coverage_report//$'\n'/'%0A'}"
           coverage_report="${coverage_report//$'\r'/'%0D'}"
