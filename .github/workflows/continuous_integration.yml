@@ -72,7 +72,6 @@ jobs:
         id: assign_badge_colors
         run: |
           source ./scripts/ci_utils.sh
-          echo ${{ needs.test.outputs.test_result }}
           test_result_color=$(get_test_result_color "${{ needs.test.outputs.test_result }}")
           statement_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.statement_coverage }}")
           branch_coverage_color=$(get_test_coverage_color "${{ steps.parse_test_coverage.outputs.branch_coverage }}")
