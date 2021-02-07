@@ -9,7 +9,7 @@ const parser = new ArgumentParser({
 
 parser.add_argument('-f', '--coverage-file', {
   help: 'The jest coverage report file in json format',
-  dest: 'inputFile',
+  dest: 'reportFile',
   type: 'str',
   required: true,
 });
@@ -23,9 +23,9 @@ parser.add_argument('-t', '--coverage-type', {
 });
 
 const args = parser.parse_args();
-const { inputFile, coverageType } = args;
+const { reportFile, coverageType } = args;
 
-const rawData = fs.readFileSync(inputFile);
+const rawData = fs.readFileSync(reportFile);
 const { total: totalCoverage } = JSON.parse(rawData);
 
 console.log(totalCoverage[coverageType].pct);
