@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       test-coverage-report: ${{ steps.test-with-jest.outputs.coverage_report }}
-      test-result: ${{ steps.test-with-jest.outputs.test_result }}
+      test-result: ${{ steps.test-with-jest.outcome }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up NodeJS
@@ -73,7 +73,8 @@ jobs:
         id: assign-badge-colors
         run: |
           source ./scripts/ci_utils.sh
-          test_result_color=$(get_test_result_color "${{ needs.lint-and-test.outputs.test-result }}")
+          echo ${{ needs.test.outputs.test-result }}
+          test_result_color=$(get_test_result_color "${{ needs.test.outputs.test-result }}")
           statement_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.statement_coverage }}")
           branch_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.branch_coverage }}")
           function_coverage_color=$(get_test_coverage_color "${{ steps.parse-test-coverage.outputs.function_coverage }}")s
@@ -90,7 +91,7 @@ jobs:
           gistID: ${{ secrets.GIST_ID }}
           filename: jest_test_result.json
           label: "Test"
-          message: ${{ needs.lint-and-test.outputs.test-result }}
+          message: ${{ needs.test.outputs.test-result }}
           color: ${{ steps.assign-badge-colors.outputs.test_result_color }}
       - name: Generate badge for statement coverage
         uses: schneegans/dynamic-badges-action@v1.0.0
