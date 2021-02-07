@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.0.2",
+    "argparse": "^2.0.1",
     "dotenv": "^8.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "express": "^4.17.1",

@@ -23,28 +23,37 @@ jobs:
         run: yarn lint
       - name: Test using Jest
         id: test-with-jest
-        run: |
-          source ./scripts/ci_utils.sh
-          coverage_report=$(yarn test:coverage --coverageReporters=text-summary)
-          test_result=$(get_test_result $?)
-          echo ::set-output name=test_result::"${test_result}"
-          coverage_report="${coverage_report//'%'/'%25'}"
-          coverage_report="${coverage_report//$'\n'/'%0A'}"
-          coverage_report="${coverage_report//$'\r'/'%0D'}"
-          echo ::set-output name=coverage_report::"${coverage_report}"
+        run: yarn test:coverage --coverageReporters=json-summary
+      - name: Upload test coverage report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-summary
+          path: ./jest/coverage/coverage-summary.json
   generate-badge:
     needs: lint-and-test
     name: Generate badges
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.15.4"
+      - name: Install packages
+        run: yarn install
+      - name: Download test coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage-summary
       - name: Parse test coverage
         id: parse-test-coverage
         run: |
-          statement_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Statements | awk '{print $3}' | sed 's/.$//')
-          branch_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Branches | awk '{print $3}' | sed 's/.$//')
-          function_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Functions | awk '{print $3}' | sed 's/.$//')
-          line_coverage=$(echo "${{ needs.lint-and-test.outputs.test-coverage-report }}" | grep Lines | awk '{print $3}' | sed 's/.$//')
+          statement_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t statements)
+          branch_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t branches)
+          function_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t functions)
+          line_coverage=$(node ./scripts/extract_test_coverage_from_report.js -f coverage-summary.json -t lines)
           echo ::set-output name=statement_coverage::"${statement_coverage}"
           echo ::set-output name=branch_coverage::"${branch_coverage}"
           echo ::set-output name=function_coverage::"${function_coverage}"
