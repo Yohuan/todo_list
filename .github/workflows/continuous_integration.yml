@@ -6,7 +6,7 @@ on:
       - test_ci
 jobs:
   lint:
-    name: Lint the code
+    name: Lint code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
       - name: Lint using ESLint
         run: yarn lint
   test:
-    name: Test the code
+    name: Test code
     runs-on: ubuntu-latest
     outputs:
       test_result: ${{ steps.test_with_jest.outcome }}
