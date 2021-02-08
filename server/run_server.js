@@ -13,7 +13,7 @@ dotdev.config({ path: envFile });
 
 // TODO: put port as env variable
 const _PORT = 5566;
-const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yaml');
+const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yml');
 
 const todoInMemoryStorage = createTodoInMemoryStorage();
 todoStorageRegistry.register(todoInMemoryStorage);

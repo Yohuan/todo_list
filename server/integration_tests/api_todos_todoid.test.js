@@ -9,7 +9,7 @@ const { HttpHeader } = require('@server/constants/http');
 const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
 const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 
-const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
+const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
 
 const _TESTING_TODO_ID = 'todo_abcdef';
