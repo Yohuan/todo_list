@@ -105,12 +105,9 @@ describe('PUT /api/todos/{todoId}', () => {
         return request(app)
           .get(`/api/todos/${_TESTING_TODO_ID}`)
           .expect(res => {
-            expect(res.body).toEqual({
-              id: _TESTING_TODO_ID,
-              object: 'todo',
-              description: 'modified todo',
-              isCompleted: true,
-            });
+            const todo = res.body;
+            expect(todo.description).toBe('modified todo');
+            expect(todo.isCompleted).toBeTrue();
           });
       });
   });
