@@ -86,6 +86,7 @@ describe('POST /api/todos', () => {
     return request(app)
       .post('/api/todos')
       .send({ todoDescription: 'a new todo' })
+      .expect(HttpHeader.LOCATION, /localhost:5566\/api\/todos\/todo_/)
       .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(201)
       .expect(res => {
