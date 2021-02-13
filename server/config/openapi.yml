@@ -107,12 +107,16 @@ components:
   schemas:
     TodoId:
       type: string
-      example: GzFxKH
+      example: todo_GzFxKH
     Todo:
       type: object
       properties:
         id:
           $ref: '#/components/schemas/TodoId'
+        object:
+          type: string
+          enum:
+            - todo
         description:
           type: string
         isCompleted:
@@ -122,7 +126,8 @@ components:
         - id
         - description
       example:
-        id: UHwkfm
+        id: todo_UHwkfm
+        object: 'todo'
         description: 'Learn how to write test'
         isCompleted: false
     Error:

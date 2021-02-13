@@ -9,17 +9,17 @@ const { HttpHeader } = require('@server/constants/http');
 const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
 const { TodoErrorCode } = require('@server/constants/error');
 
-const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
+const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
 
 const _INITIAL_TODOS = [
   {
-    id: 'abcdef',
+    id: 'todo_abcdef',
     description: 'first todo',
     isCompleted: false,
   },
   {
-    id: 'ghijkl',
+    id: 'todo_ghijkl',
     description: 'second todo',
     isCompleted: true,
   },
@@ -47,7 +47,20 @@ describe('GET /api/todos', () => {
       .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(200)
       .expect(res => {
-        expect(res.body).toEqual(_INITIAL_TODOS);
+        expect(res.body).toEqual([
+          {
+            id: 'todo_abcdef',
+            object: 'todo',
+            description: 'first todo',
+            isCompleted: false,
+          },
+          {
+            id: 'todo_ghijkl',
+            object: 'todo',
+            description: 'second todo',
+            isCompleted: true,
+          },
+        ]);
       });
   });
   it('should return 500 with error code when storage fails', () => {
@@ -76,7 +89,7 @@ describe('POST /api/todos', () => {
       .expect(res => {
         const { todoId } = res.body;
         expect(todoId).toBeString();
-        expect(todoId.length).toBe(6);
+        expect(todoId).toStartWith('todo_');
       });
   });
   it('should return 500 with error code when storage fails', () => {

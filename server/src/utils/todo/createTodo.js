@@ -1,7 +1,7 @@
-const { nanoid } = require('nanoid');
+const createTodoId = require('@server/utils/todo/createTodoId');
 
 module.exports = todoDescription => ({
-  id: nanoid(6),
+  id: createTodoId(),
   description: todoDescription,
   isCompleted: false,
 });

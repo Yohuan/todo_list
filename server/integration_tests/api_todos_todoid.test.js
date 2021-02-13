@@ -9,10 +9,10 @@ const { HttpHeader } = require('@server/constants/http');
 const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
 const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 
-const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
+const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
 
-const _TESTING_TODO_ID = 'abcdef';
+const _TESTING_TODO_ID = 'todo_abcdef';
 const _INITIAL_TODOS = [
   {
     id: _TESTING_TODO_ID,
@@ -45,6 +45,7 @@ describe('GET /api/todos/{todoId}', () => {
       .expect(res => {
         expect(res.body).toEqual({
           id: _TESTING_TODO_ID,
+          object: 'todo',
           description: 'first todo',
           isCompleted: false,
         });
@@ -104,11 +105,9 @@ describe('PUT /api/todos/{todoId}', () => {
         return request(app)
           .get(`/api/todos/${_TESTING_TODO_ID}`)
           .expect(res => {
-            expect(res.body).toEqual({
-              id: _TESTING_TODO_ID,
-              description: 'modified todo',
-              isCompleted: true,
-            });
+            const todo = res.body;
+            expect(todo.description).toBe('modified todo');
+            expect(todo.isCompleted).toBeTrue();
           });
       });
   });
