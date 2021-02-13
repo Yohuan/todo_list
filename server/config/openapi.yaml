@@ -107,7 +107,7 @@ components:
   schemas:
     TodoId:
       type: string
-      example: GzFxKH
+      example: todo_GzFxKH
     Todo:
       type: object
       properties:
@@ -122,7 +122,7 @@ components:
         - id
         - description
       example:
-        id: UHwkfm
+        id: todo_UHwkfm
         description: 'Learn how to write test'
         isCompleted: false
     Error:

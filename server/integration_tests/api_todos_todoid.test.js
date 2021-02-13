@@ -12,7 +12,7 @@ const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yaml');
 const _JSON_REGEX = /application\/json/;
 
-const _TESTING_TODO_ID = 'abcdef';
+const _TESTING_TODO_ID = 'todo_abcdef';
 const _INITIAL_TODOS = [
   {
     id: _TESTING_TODO_ID,
