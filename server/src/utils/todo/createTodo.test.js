@@ -3,9 +3,16 @@ const createTodo = require('./createTodo');
 const _TESTING_DESCRIPTION = 'a test todo';
 
 describe('createTodo', () => {
-  it('should create todo with id as 6-length string', () => {
+  it('should create todo with id as string', () => {
     const { id } = createTodo(_TESTING_DESCRIPTION);
     expect(id).toBeString();
-    expect(id).toStartWith('todo_');
+  });
+  it('should create todo containing correct attributes', () => {
+    // eslint-disable-next-line no-unused-vars
+    const { id, ...todoWithoutId } = createTodo(_TESTING_DESCRIPTION);
+    expect(todoWithoutId).toEqual({
+      description: _TESTING_DESCRIPTION,
+      isCompleted: false,
+    });
   });
 });
