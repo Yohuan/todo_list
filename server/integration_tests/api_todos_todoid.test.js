@@ -5,9 +5,9 @@ const request = require('supertest');
 const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
+const { ClientErrorCode, RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { HttpHeader } = require('@server/constants/http');
 const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
-const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
@@ -79,17 +79,25 @@ describe('GET /api/todos/{todoId}', () => {
 });
 
 describe('PUT /api/todos/{todoId}', () => {
-  it('should return 204 when success', () => {
+  it('should return 200 with modified todo', () => {
     _initializeTodoStorage();
 
     return request(app)
       .put(`/api/todos/${_TESTING_TODO_ID}`)
       .send({
-        id: _TESTING_TODO_ID,
         description: 'modified todo',
         isCompleted: true,
       })
-      .expect(204);
+      .expect(200)
+      .expect(res => {
+        const todo = res.body;
+        expect(todo).toEqual({
+          id: _TESTING_TODO_ID,
+          object: 'todo',
+          description: 'modified todo',
+          isCompleted: true,
+        });
+      });
   });
   it('should modify an existing todo', () => {
     _initializeTodoStorage();
@@ -97,7 +105,6 @@ describe('PUT /api/todos/{todoId}', () => {
     return request(app)
       .put(`/api/todos/${_TESTING_TODO_ID}`)
       .send({
-        id: _TESTING_TODO_ID,
         description: 'modified todo',
         isCompleted: true,
       })
@@ -111,22 +118,6 @@ describe('PUT /api/todos/{todoId}', () => {
           });
       });
   });
-  it('should return 400 with error code when the input Id does not match', () => {
-    _initializeTodoStorage();
-
-    return request(app)
-      .put(`/api/todos/${_TESTING_TODO_ID}`)
-      .send({
-        id: 'another-todo-id',
-        description: 'modified todo',
-        isCompleted: true,
-      })
-      .expect(400)
-      .expect(res => {
-        const { code } = res.body;
-        expect(code).toBe(TodoErrorCode.ID_NOT_MATCH);
-      });
-  });
   it('should return 404 with error code when giving non-existing ID', () => {
     _initializeTodoStorage();
 
@@ -134,7 +125,6 @@ describe('PUT /api/todos/{todoId}', () => {
     return request(app)
       .put(`/api/todos/${todoId}`)
       .send({
-        id: todoId,
         description: 'modified todo',
         isCompleted: true,
       })
@@ -144,13 +134,24 @@ describe('PUT /api/todos/{todoId}', () => {
         expect(code).toBe(TodoErrorCode.NOT_FOUND_ERROR);
       });
   });
+  it('should return 400 with error code when giving no target updating field', () => {
+    _initializeTodoStorage();
+
+    return request(app)
+      .put(`/api/todos/${_TESTING_TODO_ID}`)
+      .send({}) // no target field
+      .expect(400)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(ClientErrorCode.PARAMETER_PRECONDITION_FAILED);
+      });
+  });
   it('should return 500 with error code when storage fails', () => {
     initializeFailedTodoStorage();
 
     return request(app)
       .put(`/api/todos/${_TESTING_TODO_ID}`)
       .send({
-        id: _TESTING_TODO_ID,
         description: 'modified todo',
         isCompleted: true,
       })

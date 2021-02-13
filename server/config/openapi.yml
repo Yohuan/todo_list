@@ -74,16 +74,28 @@ paths:
       tags:
         - Todo
       summary: Update a todo item
+      description: To update a todo, at least one target field must be given.
       operationId: updateTodo
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Todo'
+              type: object
+              properties:
+                todoDescription:
+                  type: string
+                  example: 'Modified toto'
+                isCompleted:
+                  type: boolean
+                  example: true
       responses:
-        '204':
-          description: Success
+        '200':
+          description: A JSON of modified todo item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
         '400':
           $ref: '#/components/responses/400-BadRequest'
         '404':

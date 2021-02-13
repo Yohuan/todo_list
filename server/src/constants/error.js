@@ -1,3 +1,7 @@
+const ClientErrorCode = {
+  PARAMETER_PRECONDITION_FAILED: 300,
+};
+
 const RunTimeErrorCode = {
   UNKNOWN: 200,
 };
@@ -10,6 +14,7 @@ const TodoErrorCode = {
 };
 
 module.exports = {
+  ClientErrorCode,
   RunTimeErrorCode,
   TodoErrorCode,
 };
