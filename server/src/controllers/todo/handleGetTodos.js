@@ -1,8 +1,12 @@
+const R = require('ramda');
+
 const TodoService = require('@server/services/todo');
-const { addObjectAttribute } = require('@server/utils/control');
+const { addObjectAttribute, wrapAsListObject } = require('@server/utils/control');
 const { Object } = require('@server/constants/resource');
 const { StatusCode } = require('@server/constants/http');
 const { TodoErrorCode } = require('@server/constants/error');
+
+const _mapAsTodoList = R.pipe(R.map(addObjectAttribute(Object.TODO)), wrapAsListObject);
 
 const handleGetTodos = async (req, res) => {
   let todos;
@@ -17,7 +21,7 @@ const handleGetTodos = async (req, res) => {
     return;
   }
 
-  res.status(StatusCode.OK_200).json(todos.map(todo => addObjectAttribute(Object.TODO)(todo)));
+  res.status(StatusCode.OK_200).json(_mapAsTodoList(todos));
 };
 
 module.exports = handleGetTodos;
