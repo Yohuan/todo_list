@@ -11,6 +11,7 @@ const { TodoErrorCode } = require('@server/constants/error');
 
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
+const _FAKE_NOW = 1613237969;
 
 const _INITIAL_TODOS = [
   {
@@ -24,6 +25,10 @@ const _INITIAL_TODOS = [
     isCompleted: true,
   },
 ];
+
+jest.mock('@server/utils/time/getNowTimestampInSec', () => {
+  return jest.fn(() => _FAKE_NOW);
+});
 
 const _prepareTestingApp = async () => {
   const apiSpecStr = fs.readFileSync(_OPENAPI_SPEC_FILE, 'utf8');
@@ -96,6 +101,7 @@ describe('POST /api/todos', () => {
           object: 'todo',
           description: 'a new todo',
           isCompleted: false,
+          creationTime: _FAKE_NOW,
         });
       });
   });

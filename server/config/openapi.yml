@@ -127,6 +127,11 @@ components:
         isCompleted:
           type: boolean
           default: false
+        creationTime:
+          description: Unix epoch timestamp of the creation time
+          type: integer
+          format: int64
+          default: 0
       required:
         - id
         - description
@@ -135,6 +140,7 @@ components:
         object: 'todo'
         description: 'Learn how to write test'
         isCompleted: false
+        creationTime: 1613237017
     TodoList:
       type: object
       properties:
