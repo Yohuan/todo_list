@@ -1,6 +1,11 @@
 const createTodo = require('./createTodo');
 
 const _TESTING_DESCRIPTION = 'a test todo';
+const _FAKE_NOW = 1613237969;
+
+jest.mock('@server/utils/time/getNowTimestampInSec', () => {
+  return jest.fn(() => _FAKE_NOW);
+});
 
 describe('createTodo', () => {
   it('should create todo with id as string', () => {
@@ -13,6 +18,7 @@ describe('createTodo', () => {
     expect(todoWithoutId).toEqual({
       description: _TESTING_DESCRIPTION,
       isCompleted: false,
+      creationTime: _FAKE_NOW,
     });
   });
 });
