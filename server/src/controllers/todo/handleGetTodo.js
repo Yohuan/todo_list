@@ -1,4 +1,6 @@
 const TodoService = require('@server/services/todo');
+const { addObjectAttribute } = require('@server/utils/control');
+const { Object } = require('@server/constants/resource');
 const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { StatusCode } = require('@server/constants/http');
 const { TodoNotFoundError } = require('@server/errors/todo');
@@ -8,7 +10,7 @@ module.exports = async (req, res) => {
 
   try {
     const todo = await TodoService.getTodoById(todoId);
-    res.status(StatusCode.OK_200).json(todo);
+    res.status(StatusCode.OK_200).json(addObjectAttribute(Object.TODO)(todo));
   } catch (err) {
     if (err instanceof TodoNotFoundError) {
       res.status(StatusCode.NOT_FOUND_404).json({

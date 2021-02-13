@@ -45,6 +45,7 @@ describe('GET /api/todos/{todoId}', () => {
       .expect(res => {
         expect(res.body).toEqual({
           id: _TESTING_TODO_ID,
+          object: 'todo',
           description: 'first todo',
           isCompleted: false,
         });
@@ -106,6 +107,7 @@ describe('PUT /api/todos/{todoId}', () => {
           .expect(res => {
             expect(res.body).toEqual({
               id: _TESTING_TODO_ID,
+              object: 'todo',
               description: 'modified todo',
               isCompleted: true,
             });

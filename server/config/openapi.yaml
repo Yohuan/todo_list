@@ -113,6 +113,10 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/TodoId'
+        object:
+          type: string
+          enum:
+            - todo
         description:
           type: string
         isCompleted:
@@ -123,6 +127,7 @@ components:
         - description
       example:
         id: todo_UHwkfm
+        object: 'todo'
         description: 'Learn how to write test'
         isCompleted: false
     Error:

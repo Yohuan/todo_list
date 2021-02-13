@@ -47,7 +47,20 @@ describe('GET /api/todos', () => {
       .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(200)
       .expect(res => {
-        expect(res.body).toEqual(_INITIAL_TODOS);
+        expect(res.body).toEqual([
+          {
+            id: 'todo_abcdef',
+            object: 'todo',
+            description: 'first todo',
+            isCompleted: false,
+          },
+          {
+            id: 'todo_ghijkl',
+            object: 'todo',
+            description: 'second todo',
+            isCompleted: true,
+          },
+        ]);
       });
   });
   it('should return 500 with error code when storage fails', () => {
