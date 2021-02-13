@@ -1,13 +1,20 @@
 const TodoService = require('@server/services/todo');
 const { addObjectAttribute } = require('@server/utils/control');
+const { ClientErrorCode, RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { Object } = require('@server/constants/resource');
-const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { StatusCode } = require('@server/constants/http');
 const { TodoNotFoundError } = require('@server/errors/todo');
 
 module.exports = async (req, res) => {
   const { todoId } = req.params;
   const { description, isCompleted } = req.body;
+  if (description === undefined && isCompleted === undefined) {
+    res.status(StatusCode.BAD_REQUEST_400).json({
+      code: ClientErrorCode.PARAMETER_PRECONDITION_FAILED,
+      message: 'At least one target field must be given',
+    });
+    return;
+  }
 
   let todo;
   try {

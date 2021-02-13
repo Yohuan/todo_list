@@ -5,9 +5,9 @@ const request = require('supertest');
 const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
+const { ClientErrorCode, RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { HttpHeader } = require('@server/constants/http');
 const { initializeTodoStorage, initializeFailedTodoStorage } = require('@server/utils/testing');
-const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
@@ -132,6 +132,18 @@ describe('PUT /api/todos/{todoId}', () => {
       .expect(res => {
         const { code } = res.body;
         expect(code).toBe(TodoErrorCode.NOT_FOUND_ERROR);
+      });
+  });
+  it('should return 400 with error code when giving no target updating field', () => {
+    _initializeTodoStorage();
+
+    return request(app)
+      .put(`/api/todos/${_TESTING_TODO_ID}`)
+      .send({}) // no target field
+      .expect(400)
+      .expect(res => {
+        const { code } = res.body;
+        expect(code).toBe(ClientErrorCode.PARAMETER_PRECONDITION_FAILED);
       });
   });
   it('should return 500 with error code when storage fails', () => {
