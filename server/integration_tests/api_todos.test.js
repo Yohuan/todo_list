@@ -14,12 +14,12 @@ const _JSON_REGEX = /application\/json/;
 
 const _INITIAL_TODOS = [
   {
-    id: 'abcdef',
+    id: 'todo_abcdef',
     description: 'first todo',
     isCompleted: false,
   },
   {
-    id: 'ghijkl',
+    id: 'todo_ghijkl',
     description: 'second todo',
     isCompleted: true,
   },
@@ -76,7 +76,7 @@ describe('POST /api/todos', () => {
       .expect(res => {
         const { todoId } = res.body;
         expect(todoId).toBeString();
-        expect(todoId.length).toBe(6);
+        expect(todoId).toStartWith('todo_');
       });
   });
   it('should return 500 with error code when storage fails', () => {
