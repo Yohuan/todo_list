@@ -80,18 +80,23 @@ describe('GET /api/todos', () => {
 });
 
 describe('POST /api/todos', () => {
-  it('should return 201 with the created todo ID', () => {
+  it('should return 201 with the created todo', () => {
     _initializeTodoStorage();
 
     return request(app)
       .post('/api/todos')
       .send({ todoDescription: 'a new todo' })
+      .expect(HttpHeader.LOCATION, /localhost:5566\/api\/todos\/todo_/)
       .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(201)
       .expect(res => {
-        const { todoId } = res.body;
-        expect(todoId).toBeString();
-        expect(todoId).toStartWith('todo_');
+        const { id, ...todoWithoutId } = res.body;
+        expect(id).toStartWith('todo_');
+        expect(todoWithoutId).toEqual({
+          object: 'todo',
+          description: 'a new todo',
+          isCompleted: false,
+        });
       });
   });
   it('should return 500 with error code when storage fails', () => {

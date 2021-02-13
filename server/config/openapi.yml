@@ -46,12 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  todoId:
-                    $ref: '#/components/schemas/TodoId'
-                required:
-                  - todoId
+                $ref: '#/components/schemas/Todo'
   '/todos/{todoId}':
     parameters:
       - name: todoId
