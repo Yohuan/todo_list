@@ -1,5 +1,5 @@
 const TodoService = require('@server/services/todo');
-const { addObjectAttribute } = require('@server/utils/control');
+const { addObjectAttribute, wrapAsListObject } = require('@server/utils/control');
 const { Object } = require('@server/constants/resource');
 const { StatusCode } = require('@server/constants/http');
 const { TodoErrorCode } = require('@server/constants/error');
@@ -17,7 +17,9 @@ const handleGetTodos = async (req, res) => {
     return;
   }
 
-  res.status(StatusCode.OK_200).json(todos.map(todo => addObjectAttribute(Object.TODO)(todo)));
+  const response = todos.map(todo => addObjectAttribute(Object.TODO)(todo));
+
+  res.status(StatusCode.OK_200).json(wrapAsListObject(response));
 };
 
 module.exports = handleGetTodos;

@@ -1,4 +1,5 @@
 const Object = {
+  LIST: 'list',
   TODO: 'todo',
 };
 
