@@ -1,24 +1,21 @@
 const TodoService = require('@server/services/todo');
+const { addObjectAttribute } = require('@server/utils/control');
+const { Object } = require('@server/constants/resource');
 const { RunTimeErrorCode, TodoErrorCode } = require('@server/constants/error');
 const { StatusCode } = require('@server/constants/http');
 const { TodoNotFoundError } = require('@server/errors/todo');
 
 module.exports = async (req, res) => {
   const { todoId } = req.params;
-  const { id, description, isCompleted } = req.body;
-  if (todoId !== id) {
-    res.status(StatusCode.BAD_REQUEST_400).json({
-      code: TodoErrorCode.ID_NOT_MATCH,
-      message: 'Todo ID does not match with URL',
-    });
-  }
+  const { description, isCompleted } = req.body;
 
+  let todo;
   try {
     await TodoService.updateTodoById(todoId, {
       description,
       isCompleted,
     });
-    res.status(StatusCode.NO_CONTENT_204).end();
+    todo = await TodoService.getTodoById(todoId);
   } catch (err) {
     if (err instanceof TodoNotFoundError) {
       res.status(StatusCode.NOT_FOUND_404).json({
@@ -33,5 +30,8 @@ module.exports = async (req, res) => {
       code: RunTimeErrorCode.UNKNOWN,
       message: 'Something wrong',
     });
+    return;
   }
+
+  res.status(StatusCode.OK_200).json(addObjectAttribute(Object.TODO)(todo));
 };
