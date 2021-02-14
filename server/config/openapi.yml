@@ -18,7 +18,7 @@ paths:
       operationId: getTodos
       responses:
         '200':
-          description: A JSON list of todo items
+          description: A list object of todo items
           content:
             application/json:
               schema:
@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - Todo
-      summary: Creates a todo item
+      summary: Create a todo item
       operationId: createTodo
       requestBody:
         required: true
@@ -42,7 +42,7 @@ paths:
                 - todoDescription
       responses:
         '201':
-          description: Created Todo ID
+          description: The created todo item
           content:
             application/json:
               schema:
@@ -58,7 +58,7 @@ paths:
     get:
       tags:
         - Todo
-      summary: Find todo by ID
+      summary: Retrieve a todo by ID
       description: Given a todo ID, return a todo item.
       operationId: getTodo
       responses:
@@ -91,7 +91,7 @@ paths:
                   example: true
       responses:
         '200':
-          description: A JSON of modified todo item
+          description: A JSON of the modified todo item
           content:
             application/json:
               schema:
@@ -174,7 +174,7 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
     404-NotFound:
-      description: The request resource is not found
+      description: The requested resource is not found
       content:
         application/json:
           schema:
