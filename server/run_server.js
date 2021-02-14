@@ -9,6 +9,8 @@ const { buildApp } = require('@server/utils/app');
 const { createTodoInMemoryStorage, todoStorageRegistry } = require('@server/storage/todo');
 const { getListeningPort } = require('@server/utils/endpoint');
 
+const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yml');
+
 const envFile = path.join(process.cwd(), process.env.ENV_FILE);
 dotdev.config({ path: envFile });
 
@@ -16,26 +18,23 @@ if (!process.env.PORT) {
   throw new Error('There is no specified port!');
 }
 
-const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yml');
-
-const todoInMemoryStorage = createTodoInMemoryStorage();
-todoStorageRegistry.register(todoInMemoryStorage);
-
 const main = async () => {
-  let app = null;
+  const todoInMemoryStorage = createTodoInMemoryStorage();
+  todoStorageRegistry.register(todoInMemoryStorage);
+
+  const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
+  const port = getListeningPort();
+
   try {
-    const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
-    app = await buildApp({
+    const app = await buildApp({
       apiSpec,
       isDev: process.env.NODE_ENV === 'development',
     });
+    await app.listen(port);
+    console.log(`Listening at port ${port}`);
   } catch (err) {
-    console.error('Build app failed');
-    return;
+    console.error('Activate app failed');
   }
-  const port = getListeningPort();
-  await app.listen(port);
-  console.log(`Listening at port ${port}`);
 };
 
 main();
