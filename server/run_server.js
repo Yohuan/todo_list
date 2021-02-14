@@ -24,8 +24,7 @@ const main = async () => {
     const apiSpec = YAML.load(_OPENAPI_SPEC_FILE);
     app = await buildApp({
       apiSpec,
-      // TODO: rename "MODE" as "NODE_ENV"
-      isDev: process.env.MODE === 'development',
+      isDev: process.env.NODE_ENV === 'development',
     });
   } catch (err) {
     console.error('Build app failed');
