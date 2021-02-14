@@ -34,7 +34,7 @@ const main = async () => {
     await app.listen(port);
     console.log(`Listening at port ${port}`);
   } catch (err) {
-    console.error('Activate app failed');
+    console.error(`Activate app failed: ${err.message}`);
   }
 };
 
