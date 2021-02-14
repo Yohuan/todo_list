@@ -23,7 +23,10 @@ const handleCreateTodo = async (req, res) => {
     return;
   }
 
-  res.set(HttpHeader.LOCATION, generateTodoUrl(todoId));
+  // TODO: remove the log after fixing the flaky test
+  const todoUrl = generateTodoUrl(todoId);
+  console.log(todoUrl);
+  res.set(HttpHeader.LOCATION, todoUrl);
   res.status(StatusCode.CREATED_201).json(addObjectAttribute(Object.TODO)(todo));
 };
 
