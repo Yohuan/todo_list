@@ -126,7 +126,6 @@ components:
           type: string
         isCompleted:
           type: boolean
-          default: false
         creationTime:
           description: Unix epoch timestamp of the creation time
           type: integer
@@ -135,6 +134,7 @@ components:
       required:
         - id
         - description
+        - isCompleted
       example:
         id: todo_UHwkfm
         object: 'todo'
