@@ -12,6 +12,7 @@ const { TodoErrorCode } = require('@server/constants/error');
 const _OPENAPI_SPEC_FILE = path.join(__dirname, '../config/openapi.yml');
 const _JSON_REGEX = /application\/json/;
 const _FAKE_NOW = 1613237969;
+const _TESTING_PORT = 1234;
 
 const _INITIAL_TODOS = [
   {
@@ -28,6 +29,10 @@ const _INITIAL_TODOS = [
 
 jest.mock('@server/utils/time/getNowTimestampInSec', () => {
   return jest.fn(() => _FAKE_NOW);
+});
+
+jest.mock('@server/utils/endpoint/getListeningPort', () => {
+  return jest.fn(() => _TESTING_PORT);
 });
 
 const _prepareTestingApp = async () => {
@@ -91,7 +96,7 @@ describe('POST /api/todos', () => {
     return request(app)
       .post('/api/todos')
       .send({ todoDescription: 'a new todo' })
-      .expect(HttpHeader.LOCATION, /localhost:5566\/api\/todos\/todo_/)
+      .expect(HttpHeader.LOCATION, /localhost:1234\/api\/todos\/todo_/)
       .expect(HttpHeader.CONTENT_TYPE, _JSON_REGEX)
       .expect(201)
       .expect(res => {

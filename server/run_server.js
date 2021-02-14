@@ -7,12 +7,15 @@ const YAML = require('yamljs');
 
 const { buildApp } = require('@server/utils/app');
 const { createTodoInMemoryStorage, todoStorageRegistry } = require('@server/storage/todo');
+const { getListeningPort } = require('@server/utils/endpoint');
 
 const envFile = path.join(process.cwd(), process.env.ENV_FILE);
 dotdev.config({ path: envFile });
 
-// TODO: put port as env variable
-const _PORT = 5566;
+if (!process.env.PORT) {
+  throw new Error('There is no specified port!');
+}
+
 const _OPENAPI_SPEC_FILE = path.join(__dirname, 'config/openapi.yml');
 
 const todoInMemoryStorage = createTodoInMemoryStorage();
@@ -30,8 +33,9 @@ const main = async () => {
     console.error('Build app failed');
     return;
   }
-  await app.listen(_PORT);
-  console.log(`Listening at port ${_PORT}`);
+  const port = getListeningPort();
+  await app.listen(port);
+  console.log(`Listening at port ${port}`);
 };
 
 main();
